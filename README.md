@@ -8,7 +8,9 @@ Software Development Project
 
 How to commit?
 
-1. After launch your Github, there will be a source control icon inside your VSC
-2. Click that icon, select commit
-3. It will pop-up a box, insert some words and tick at the right corner
-4. Done! 
+1. After launch your Github, there will have a source control icon inside your VSC
+2. After that, before exit, please save the word
+3. Find the source control icon, select commit and sync
+4. It will pop-up a box to let you write things
+5. Insert some words (please write the purpose in order to track easier in the future) and tick at the right corner
+6. Done! 
