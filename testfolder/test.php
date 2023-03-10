@@ -16,7 +16,7 @@
 </style>
 
 <body> 
-    <h1>List of customers</h1>
+    <h1>List of Customers</h1>
         <table border = 2>
             <tr>
                 <center><th>Customer ID</th>
@@ -24,20 +24,21 @@
                 <th>Customer Email</th>
                 <th>Customer Contact</th></center>
             </tr>
-        </table>
     <?php
         include 'dbcon.php';
         $query = 'SELECT * FROM customer';
-        $results = mysqli_query($connection,$query);
-        while ($row = mysqli_fetch_assoc($results))
+        $result = mysqli_query($connection,$query);
+        while ($row = mysqli_fetch_assoc($result)){
             echo "<tr>";
             echo "<td>" . $row["cus_id"] . "</td>";
             echo "<td>" . $row["cus_name"] . "</td>";
             echo "<td>" . $row["cus_email"] . "</td>";
             echo "<td>" . $row["cus_contact"] . "</td>";
             echo "</tr>";
+        }
         mysqli_close($connection);
     ?>
+    </table>
 </body>
 </html>
 
