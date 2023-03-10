@@ -16,7 +16,7 @@
     }
 </style>
 <body>
-    <h2>Test 02 - Search Customer's Name</h2>
+    <h2>Test 02 - Search Customer's Name</h2>/*bhsd*/
     <form action="test03.php" method=post target=blank id=searchbar>
         Customer's Name: <input id="inputfield" type="text" placeholder="Search Customer" name="search" required><br>
         <br><input type="submit" value="Submit" name="submit"> <input type="reset" value="Reset">
