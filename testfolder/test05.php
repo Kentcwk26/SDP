@@ -16,10 +16,13 @@
 </style>
 <body>
     <?php
+        $filtersearch = $_POST['filter'];
         include 'dbcon.php';
         $query4 = "SELECT * FROM customer";
         $result4 = mysqli_query($connection,$query4);
-        if (mysqli_num_rows($result4) > 0){
+        echo "Filter Search: ";
+        echo $filtersearch;
+        if ($filtersearch == "Customer's Name"){
             ?>
                 <h2 id="content_title">Results</h2>
                 <table border = 2>
@@ -35,9 +38,21 @@
                     echo "</tr>";
                 }
         } else {
-            echo "<h2>No results!</h2>"; 
+            ?>
+            <h2 id="content_title">Results</h2>
+            <table border = 2>
+            <tr>
+                <th>Customer ID</th>
+                <th>Customer Name</th>
+            </tr>
+        <?php
+            while ($row = mysqli_fetch_assoc($result4)) {
+                echo "<tr>";
+                echo "<td>" . $row["cus_id"] . "</td>";
+                echo "<td>" . $row["cus_name"] . "</td>";
+                echo "</tr>"; 
         }
-        
+    }
         ?>
 </body>
 </html>
