@@ -16,9 +16,14 @@
     }
 </style>
 <body>
-    <h2>Test 02 - Search (List of Customers)</h2>
-    <form action="test03.php" method=get id=searchbar>
+    <h2>Test 02 - Search Customer's Name</h2>
+    <form action="test03.php" method=post target=blank id=searchbar>
         <input id="inputfield" type="text" placeholder="Search Anything Here" name="search" required><br>
+        <br><input type="submit" value="Submit" name="submit">
+    </form>
+    <h2>Test 04 - Search Anything</h2>
+    <form action="test04.php" method=post target=blank id=searchbar>
+        <input id="inputfield" type="text" placeholder="Search Anything Here" name="searchanything" required><br>
         <br><input type="submit" value="Submit" name="submit">
     </form>
 </body>

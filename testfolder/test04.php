@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test 03 - Results</title>
+    <title>Test 04 - Results</title>
 </head>
 <style>
     tr,td,th{
@@ -16,13 +16,13 @@
 </style>
 <body>
     <?php
-        $search = $_POST['search'];
+        $searchvalue = $_POST['searchanything'];
         include 'dbcon.php';
-        $query2 = " SELECT * FROM customer WHERE cus_name LIKE '%$search%'";
-        $result2 = mysqli_query($connection,$query2);
+        $query3 = " SELECT * FROM customer WHERE cus_name LIKE '%$searchvalue%' OR cus_id LIKE '%$searchvalue%' OR cus_email LIKE '%$searchvalue%' OR cus_contact LIKE '%$searchvalue%'";
+        $result3 = mysqli_query($connection,$query3);
         echo "Search: " ;
-        echo $search;
-        if (mysqli_num_rows($result2) > 0){
+        echo $searchvalue;
+        if (mysqli_num_rows($result3) > 0){
             ?>
                 <h2 id="content_title">Results</h2>
                 <table border = 2>
@@ -33,7 +33,7 @@
                     <th>Customer Contact</th>
                 </tr>
             <?php
-                while ($row = mysqli_fetch_assoc($result2)) {
+                while ($row = mysqli_fetch_assoc($result3)) {
                     echo "<tr>";
                     echo "<td>" . $row["cus_id"] . "</td>";
                     echo "<td>" . $row["cus_name"] . "</td>";
