@@ -10,7 +10,7 @@
     tr,td,th{
         text-align:center;
         padding:12px;
-        padding-right: 20px;
+        padding-right: 20px;//knj
         border-spacing: 12px;
     }
 </style>
