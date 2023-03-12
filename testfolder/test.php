@@ -23,6 +23,7 @@
                 <th>Customer Name</th>
                 <th>Customer Email</th>
                 <th>Customer Contact</th></center>
+                <TH>gENDER</TH>
             </tr>
     <?php
         include 'dbcon.php';
