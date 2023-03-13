@@ -18,6 +18,7 @@
 <body> 
     <h1>List of Customers</h1>
     <p>Testing 123...</p>
+    <h2>13 March 2023</h2>
         <table border = 2>
             <tr>
                 <center><th>Customer ID</th>
