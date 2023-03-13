@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="dfRwHKBlENW-d8Ourb-T" name="General">
-        <mxGraphModel dx="1463" dy="325" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="1978" dy="598" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -349,6 +349,49 @@
                 </mxCell>
                 <mxCell id="94" value="View Report" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
                     <mxGeometry x="-90" y="1270" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="98" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="96" target="97">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="930" y="80"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="100" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="96" target="99">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1090" y="80"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="102" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="96" target="101">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1270" y="80"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="104" style="edgeStyle=none;html=1;" edge="1" parent="1" source="96" target="103">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1410" y="80"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="96" value="Common Navigation" style="ellipse;whiteSpace=wrap;html=1;rounded=1;arcSize=0;" vertex="1" parent="1">
+                    <mxGeometry x="1140" y="40" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="97" value="About Us" style="whiteSpace=wrap;html=1;rounded=1;arcSize=0;" vertex="1" parent="1">
+                    <mxGeometry x="870" y="180" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="99" value="Privacy Policy Notes" style="whiteSpace=wrap;html=1;rounded=1;arcSize=0;" vertex="1" parent="1">
+                    <mxGeometry x="1030" y="180" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="101" value="Terms &amp;amp; Conditions" style="whiteSpace=wrap;html=1;rounded=1;arcSize=0;" vertex="1" parent="1">
+                    <mxGeometry x="1210" y="180" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="103" value="Help &amp;amp; Support" style="whiteSpace=wrap;html=1;rounded=1;arcSize=0;" vertex="1" parent="1">
+                    <mxGeometry x="1350" y="180" width="120" height="60" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
