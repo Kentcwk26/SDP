@@ -8,34 +8,35 @@
     <link rel="icon" type="image/x-icon" href="Icon.png" >
 </head>
 <style>
+    body{
+        background-color: #fae094;
+    }
     .container {
         position: relative;
         width: 100%;
         height: 100%;
     }
-    .moving-animation {
-        position: absolute;
+    .animate-text {
+        position: fixed;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        animation: move-text 2s ease-in-out forwards;
+        animation: move-up 2s forwards;
     }
-    @keyframes move-text {
-    from {
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+
+    @keyframes move-up {
+        0% {
+            top: 50%;
+        }
+        100% {
+            top: 15%;
+        }
     }
-    to {
-        top: 0;
-        left: 0;
-        transform: translate(0, 0);
-    }
-    }
+
 </style>
-<body background-color: #fae094>
-    <div id="container">
-        <img src="Logo4.png" height=auto width=auto class="moving-animation">
+<body>
+    <div>
+        <a href="mainindex.php"><img src="Logo4.png" height=auto width=auto class="animate-text"></a>
     </div>
 </body>
 </html>
