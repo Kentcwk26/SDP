@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/x-icon" href="Logo.png" >
+  <link rel="icon" type="image/x-icon" href="Icon.png" >
+  <link rel="stylesheet" href="https://unpkg.com/transition-style">
   <title>Index</title>
 </head>
 <style>
-
   .animated {
     animation-duration: 2s;
     animation-fill-mode: both;
@@ -21,8 +21,8 @@
       transform: translateY(-2000px) scaleY(0.7);
       transform-origin: 50% 100%;
     }
-    80% {
-      transform: translateY(30px) scaleY(1.1);
+    90% {
+      transform: translateY(10px) scaleY(1.1);
       transform-origin: 50% 100%;
     }
     100% {
@@ -32,32 +32,22 @@
     }
   }
 
-  .animated::after{
-    left: 0%;
-  }
-
-  .animate{ 
-    animation-duration: 2s;
-    animation-fill-mode: both;
-    animation-name: wipe-in-top-right;
-  }
-
+  @import "transition-style";
   @keyframes wipe-in-top-right {
-    from {
-      clip-path: polygon(-50% 50%, 50% 150%, 50% 150%, -50% 50%);
-    }
-    to {
-      clip-path: polygon(50% -50%, 150% 50%, 50% 150%, -50% 50%);
-    }
-  } 
+    0% {background-color: white;}
+    20% {background-color: #d9bb97}
+    40% {background-color: #f4c4c6}
+    60% {background-color: #a0daea}
+    80% {background-color: #a2d188}
+    100% {background-color: #fae094;}
+  }
 
   [transition-style="in:wipe:top-right"] {
-    animation: 2.5s cubic-bezier(.25, 1, .30, 1) wipe-in-top-right both;
+    animation: 3.0s wipe-in-top-right both;
   }
 
 </style>
-<body>
-    <center><br><br><br><br><br><br><br><img class="animated" src="Logo.png"></center>
-    <div class=animate></div>
+<body transition-style="in:wipe:top-right">
+    <center><br><br><br><br><br><br><br><br><br><a href="mainindex.php"><img class="animated" src="Logo.png"></a></center>
 </body>
 </html>
