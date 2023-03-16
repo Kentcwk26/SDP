@@ -11,10 +11,29 @@
     body{
         background-color: #fae094;
     }
-    .container {
-        position: relative;
-        width: 100%;
-        height: 100%;
+    ul,.box{
+        float: left;
+        border: 1px solid black;
+        text-align: center;
+        font-size: 18px;
+        padding: 12px 20px;
+        margin: 5px;
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+        list-style: none;
+    }
+    .frame{
+        height:50px;
+        display: grid;
+        padding: 4px 10px 16px 18px;
+    }
+    #main{
+        height: 200px;
+    }
+    #bar{
+        align: center;
+        height: 100px;
     }
     .animate-text {
         position: fixed;
@@ -23,7 +42,6 @@
         transform: translate(-50%, -50%);
         animation: move-up 2s forwards;
     }
-
     @keyframes move-up {
         0% {
             top: 50%;
@@ -32,11 +50,25 @@
             top: 15%;
         }
     }
-
 </style>
 <body>
-    <div>
-        <a href="mainindex.php"><img src="Logo4.png" height=auto width=auto class="animate-text"></a>
+    <?php
+        include "dbcon.php";
+    ?>
+    <div id="main"><a href="mainindex.php"><img src="Logo4.png" height=auto width=auto class="animate-text"></a></div>
+    <div id="bar">
+        <ul>
+            <a href="mainindex.php" class="box">About Us</a>
+            <a href="mainindex.php" class="box">Help & Support</a>
+            <a href="mainindex.php" class="box">Services</a>
+            <a href="mainindex.php" class="box">Privacy Notes</a>
+            <a href="mainindex.php" class="box">Login</a>
+        </ul>
+    </div>
+    <div id="back">
+        <?php
+            include "footer.php";
+        ?>
     </div>
 </body>
 </html>

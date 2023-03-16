@@ -1,5 +1,5 @@
 <mxfile host="65bd71144e">
-    <diagram id="dfRwHKBlENW-d8Ourb-T" name="General">
+    <diagram id="dfRwHKBlENW-d8Ourb-T" name="Flowchart">
         <mxGraphModel dx="3530" dy="1420" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
@@ -469,6 +469,14 @@
                 <mxCell id="FY3pBU3A7UskD2fbEYl2-1" value="Customer" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.05;darkOpacity2=0.1;" parent="1" vertex="1">
                     <mxGeometry x="660" y="960" width="120" height="80" as="geometry"/>
                 </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram id="Mo1mHI0TGcMVST4XlRep" name="ERD">
+        <mxGraphModel dx="1072" dy="568" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
             </root>
         </mxGraphModel>
     </diagram>

@@ -18,6 +18,6 @@
 </head>
 <body>
     <div><h1>SDP PET PARADISE @COPYRIGHT 2023, ALL RIGHT RESERVED.</h1>
-    <a href="#">About Us</a> <a href="#">Terms & Conditions</a> <a href="#">Privacy Notes</a> <a href="#"> Help & Support </a>
+    <a href="#">About Us</a> <a href="#">Terms & Conditions</a> <a href="#">Privacy Notes</a> <a href="#"> Help & Support </a></div>
 </body>
 </html>
