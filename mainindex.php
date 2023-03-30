@@ -11,7 +11,7 @@
     body{
         background-color: #fae094;
     }
-    ul,.box{
+    .box{
         float: left;
         border: 1px solid black;
         text-align: center;
@@ -33,7 +33,7 @@
     }
     #bar{
         align: center;
-        height: 100px;
+        height: 80px;
     }
 </style>
 <body>
@@ -42,13 +42,13 @@
     ?>
     <div id="main"><a href="mainindex.php"><img src="Logo4.png" height=auto width=auto></a></div>
     <div id="bar">
-        <ul>
-            <a href="mainindex.php" class="box">About Us</a>
-            <a href="mainindex.php" class="box">Help & Support</a>
-            <a href="mainindex.php" class="box">Services</a>
-            <a href="mainindex.php" class="box">Privacy Notes</a>
-            <a href="mainindex.php" class="box">Login</a>
-        </ul>
+        <center>
+        <a href="mainindex.php" class="box">About Us</a>
+        <a href="mainindex.php" class="box">Help & Support</a>
+        <a href="mainindex.php" class="box">Services</a>
+        <a href="mainindex.php" class="box">Privacy Notes</a>
+        <a href="mainindex.php" class="box">Login</a>
+        </center>
     </div>
     <div id="back">
         <?php
