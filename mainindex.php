@@ -35,27 +35,12 @@
         align: center;
         height: 100px;
     }
-    .animate-text {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        animation: move-up 2s forwards;
-    }
-    @keyframes move-up {
-        0% {
-            top: 50%;
-        }
-        100% {
-            top: 15%;
-        }
-    }
 </style>
 <body>
     <?php
         include "dbcon.php";
     ?>
-    <div id="main"><a href="mainindex.php"><img src="Logo4.png" height=auto width=auto class="animate-text"></a></div>
+    <div id="main"><a href="mainindex.php"><img src="Logo4.png" height=auto width=auto></a></div>
     <div id="bar">
         <ul>
             <a href="mainindex.php" class="box">About Us</a>
