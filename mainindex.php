@@ -14,15 +14,6 @@
         height: 100%;
         padding-bottom: 5px;
     }
-    .box{
-        text-align: center;
-        font-size: 25px;
-        padding: 10px 60px;
-        margin: 10px;
-        color: black;
-        font-weight: bold;
-        list-style: none;
-    }
     #bar{
         height: 50px;
         margin-top: 20px;
@@ -36,21 +27,23 @@
         height: 800px;
         margin-left: 30px;
     }
-    #small-text{
-        font-size: 18px;
-        align: center;
-        text-align: left;
-        width: 300px;
-        height: 80px;
-    }
     #slider{
         float: right;
-        width: 760px;
+        width: 600px;
         height: 300px;
         margin-top: 20px;
-        margin-right: 100px;
+        margin-right: 80px;
         color: grey;
         border: 4px solid gray;
+    }
+    .box{
+        align: center;
+        font-size: 25px;
+        padding: 10px 60px;
+        margin: 20px;
+        color: black;
+        font-weight: bold;
+        list-style: none;
     }
     .box:hover{
         color: grey;
@@ -61,11 +54,7 @@
     <?php
         include "dbcon.php";
     ?>
-    <div id="header">
-        <a href="mainindex.php"><img src="Logo4.png"></a>
-        <h1 style="font-size: 40px; font-weight: bold;">Pet Paradise</h1>
-        <div><h1>yyyy</h1></div>
-    </div>
+    <div id="header"><a href="mainindex.php"><img src="Logo4.png"></a></div>
     <div style="clear:both;"></div>
     <div id="bar">
         <a href="mainindex.php" class="box">About Us</a>
@@ -75,8 +64,8 @@
         <a href="mainindex.php" class="box">Login / Register</a>
     </div>
     <div id="content">
-        <h2 style="color:#7F9F6D">Who are we and What we are doing?</h2>
-        <div id="small-text"><h3>We are an organization who have provide many kinds of services such as treatments, pet grooming, etc.....</h3></div>
+        <h2 style="color:#7F9F6D; font-size: 26px;">Who are we and What we are doing?</h2>
+        <h3 style="font-size: 20px; text-align: left; width: 200px; height: 80px;">We are an organization who have provide many kinds of services such as treatments, pet grooming, etc.....</h3></div>
     </div>
     <div id="slider"></div>
     <div style="clear:both;"></div>

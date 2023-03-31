@@ -7,7 +7,7 @@
     <title>Footer</title>
     <style>
         div{
-            margin: 0;
+            margin: 0 auto;
             text-align: center;
         }
         a:hover{
