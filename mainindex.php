@@ -53,8 +53,8 @@
 <body style="background-color: #fae094;">
     <?php
         include "dbcon.php";
+        include "header.php";
     ?>
-    <div id="header"><a href="mainindex.php"><img src="Logo4.png"></a></div>
     <div style="clear:both;"></div>
     <div id="bar">
         <a href="mainindex.php" class="box">About Us</a>
