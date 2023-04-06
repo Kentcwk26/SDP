@@ -12,7 +12,7 @@
     <?php
         include "dbcon.php";
     ?>
-    <center><div id="adminIndexHeader"><a href="admin.php"><img src="Logo4.png"></a></div></center>
+    <center><div id="adminIndexHeader"><a href="admin.php"><img src="png/Logo4.png"></a></div></center>
     <center><br><h1><b>Welcome back, Admin!</b></h1>
     <div style="display:flex; justify-content: center;">
         <a href="manageuser.php">
