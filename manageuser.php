@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="Icon.png" >
+    <link rel="icon" type="image/x-icon" href="png\Icon.png" >
     <link rel="stylesheet" href="css/style.css">
     <title>Manage Users</title>
     <style>
@@ -40,7 +40,7 @@
     <?php
         include "dbcon.php";
     ?>
-    <center><div id="adminIndexHeader"><a href="admin.php"><img src="Logo4.png"></a>></center>
+    <center><div id="adminIndexHeader"><a href="admin.php"><img src="png\Logo4.png"></a>></center>
     <div style="display:flex; justify-content: center;">
         <a href="managecustomer.php">
             <div class="box1">Customer</div>
