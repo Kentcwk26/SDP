@@ -11,21 +11,18 @@
         padding: 10px;
     }
     table {
-        border-spacing: 5px;
+        border-spacing: 4px;
     }
 </style>
-
 <body> 
     <h1>List of Customers</h1>
-    <p>Testing 123...</p>
-    <h2>13 March 2023</h2>
         <table border = 2>
             <tr>
                 <center><th>Customer ID</th>
                 <th>Customer Name</th>
                 <th>Customer Email</th>
                 <th>Customer Contact</th></center>
-                <TH>gENDER</TH>
+                <TH>Gender</TH>
             </tr>
     <?php
         include 'dbcon.php';
@@ -40,10 +37,6 @@
             echo "</tr>";
         }
         mysqli_close($connection);
-
-        fhjfhfhfhfjfjufjfjyfyfyfjyddud
-        fjyfjyfgvjfghjhvjjydydthgf
-
     ?>
     </table>
 </body>

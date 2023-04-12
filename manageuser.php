@@ -39,6 +39,8 @@
 <body>
     <?php
         include "dbcon.php";
+        include "sidemenu.php";
+        sleep(1);
     ?>
     <center><div id="adminIndexHeader"><a href="admin.php"><img src="png\Logo4.png"></a>></center>
     <div style="display:flex; justify-content: center;">

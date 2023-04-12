@@ -24,6 +24,7 @@
 <body>
     <?php
         include "dbcon.php";
+        include "sidemenu.php";
     ?>
     <center><div id="adminIndexHeader"><a href="admin.php"><img src="png/Logo4.png"></a></div>
     <div id="blackbox"><h1 style="color: white; padding-top: 30px;">Generate Sales Report</h1>

@@ -1,5 +1,5 @@
 #box {
-    width: 95%;
+    width: 1000px;
     height: 550px;
     background-color: #f1f1f1;
     border: 1px solid black;
@@ -13,7 +13,7 @@
     border: 1px solid black;
     height: 150px;
     width: 150px;
-    margin: 10px;
+    margin: 6px;
 }
 h2{
     text-align: left;
