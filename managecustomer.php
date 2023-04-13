@@ -32,6 +32,10 @@
         background-color: #dddddd;
         color: black;
     }
+    a:visited{
+        text-decoration: none;
+        color: blue;
+    }
 </style>
 <body>
     <?php

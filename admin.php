@@ -11,6 +11,7 @@
 <body>
     <?php
         include "dbcon.php";
+        sleep(1);
     ?>
     <center><div id="adminIndexHeader"><a href="admin.php"><img src="png/Logo4.png"></a></div></center>
     <center><br><h1><b>Welcome back, Admin!</b></h1>

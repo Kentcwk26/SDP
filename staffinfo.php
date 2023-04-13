@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/style2.css">
     <link rel="icon" type="image/x-icon" href="png\Icon.png">
-    <title>Customer Info</title>
+    <title>Staff Info</title>
 <style>
     #box {
         width: 1468px;
@@ -35,41 +35,25 @@
         <div class="circle"></div>
     <b><table style="padding: 20px; margin: 10px;">
         <?php
-            $id = $_GET['id'];
-            $query = "SELECT * FROM customer where customer_id = '$id'";
+            $u = $_GET['u'];
+            $query = "SELECT * FROM staff where staff_username = '$u'";
             $result = mysqli_query($connection,$query);
             while ($row = mysqli_fetch_assoc($result)){
-                $id = $row['customer_id'];
-                $name = $row['customer_name'];
-                $username = $row['customer_username'];
-                $email = $row['customer_email'];
-                $contact = $row['customer_contactnumber'];
-                $address = $row['customer_homeaddress'];
+                $username = $row['staff_username'];
+                $contact = $row['staff_contactnumber'];
+                $desc = $row['staff_desc'];
                 ?>
                 <tr>
-                    <td>Customer ID:</td>
-                    <td><?php echo $id; ?></td>
-                </tr>
-                <tr>
-                    <td>Name:</td>
-                    <td><?php echo $name; ?></td>
-                </tr>
-                <tr>
-                    <td>Username:</td>
+                    <td>Staff Username:</td>
                     <td><?php echo $username; ?></td>
                 </tr>
                 <tr>
-                    <td>Email:</td>
-                    <td><?php echo $email; ?></td>
-                </tr>
-                <tr>
-                    <td>Contact Number:</td>
+                    <td>Staff Contact:</td>
                     <td><?php echo $contact; ?></td>
                 </tr>
                 <tr>
-                    <td>Address:</td>
-                    <td><?php echo $address; ?></td>
-                </tr>
+                    <td>Staff Description:</td>
+                    <td><?php echo $desc; ?></td>
                 <?php
                 }   
                 mysqli_close($connection);

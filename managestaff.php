@@ -21,6 +21,7 @@
     }
     tr,td{
         border: 1px solid black;
+        color: black;
         text-align: center;
         padding: 15px;
         font-size: 18px;
@@ -29,6 +30,11 @@
         border: 1px solid black;
         padding: 15px;
         background-color: #dddddd;
+        color: black;
+    }
+    a:visited{
+        text-decoration: none;
+        color: blue;
     }
 </style>
 <body>
@@ -38,15 +44,32 @@
         sleep(1);
     ?>
     <center><div id="adminIndexHeader"><a href="admin.php"><img src="png\Logo4.png"></a></div>
-    <h1><b>Manage Staffs</b></h1>
+    <h1><b>Manage Staff</b></h1>
     <table>
-        <tr>
-            <th>Name</th>
-            <th>Action</th>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
+        <?php
+            $sql = "SELECT * FROM staff";
+            $result = mysqli_query($connection,$sql);
+                ?>
+                <tr>
+                    <th>Username</th>
+                    <th>Action</th>
+                </tr>
+                <?php
+                while ($row = mysqli_fetch_assoc($result)){
+                    ?>
+                    <tr>
+                        <td>
+                            <a href="staffinfo.php?u=<?php echo $row["staff_username"]; ?>"><?php echo $row["staff_username"]; ?></a>
+                        </td>
+                        <td>   
+                            <a href="editstaff.php?u=<?php echo $row["staff_username"]; ?>">Edit</a>
+                            <a href="deletestaff.php?u=<?php echo $row["staff_username"]; ?>">Delete</a>
+                        </td>
+                    </tr>
+                <?php
+                }   
+                mysqli_close($connection);
+            ?>
         </tr>
     </table>
     </center>
