@@ -9,24 +9,100 @@
   transition: all 0.3s ease;
   font-size: 16px;
   }
-  
+
+.sidebar .sidebar-title {
+  padding: 20px;
+  background-color:#D9D9D9;
+  font-size: 20px;
+}
+
+.sidebar .sidebar-menu {
+  padding: 10px 0;
+}
+
+.sidebar .sidebar-menu ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.sidebar .sidebar-menu ul li {
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar .sidebar-menu ul li a {
+  display: block;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #fff;
+}
+
+.sidebar .sidebar-menu ul li a:hover {
+  background-color: whitesmoke;
+  color: black;
+}
+
+.sidebar .sidebar-menu ul li.active a {
+  background-color: #555;
+}
+
+.sidebar .sidebar-menu .dropdown-btn {
+  display: block;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #fff;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}
+
+.sidebar .sidebar-menu .dropdown-btn:hover {
+  background-color: #555;
+}
+
+.sidebar .sidebar-menu .dropdown-container {
+  display: none;
+  padding: 0 20px;
+}
+
+.sidebar .sidebar-menu .dropdown-container a {
+  padding: 10px 0;
+  display: block;
+  text-decoration: none;
+  color: #fff;
+}
+
+.sidebar .sidebar-menu .dropdown-container a:hover {
+  background-color: whitesmoke;
+  color: black;
+}
+
+.sidebar .sidebar-menu .dropdown-container .active a {
+  background-color: #D9D9D9;
+}
+
 .sidebar.active {
   left: 0;
 }
 
 .sidebar ul {
-  list-style-type: none;
   margin: 0;
   padding: 0;
+  list-style-type: none;
+  text-decoration: none;
 }
 
 .sidebar ul li {
-  margin: 10px;
+  margin: 15px;
+  text-decoration: none;
 }
 
-.sidebar ul li a {
+.sidebar ul li a{
   color: #fff;
-  text-decoration: none;
 }
 
 .content {

@@ -7,7 +7,7 @@
     <title>Pet Paradise Pet Care System</title>
 </head>
 <body>
-<a href="index.php"><img src="img/profile.jpg" alt="logo"></a>
+<a href="customer_home.php"><img src="img/profile.jpg" alt="logo"></a>
 <h1>Pet Paradise</h1>
 <p>Pet Care System</p>
 </body>

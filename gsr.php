@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,32 +13,70 @@
 <style>
     #blackbox{
         text-align: center;
-        background-color: black;
+        background-color: grey;
         width: 100%;
-        height: 320px;
+        height: 490px;
     }
     #button{
-        position: absolute;
-        align-items: center;
         width: 250px;
         height: 65px;
         background: #D9D9D9;
         border-radius: 50px;
-        left: 50%;
-        margin: -10px 0 0 -124px;
     }
-
+    input[type=date]{
+        width: 200px;
+        height: 40px;
+        margin: 10px;
+        border: none;
+        background: none;
+        outline: none;
+        font-size: 18px;
+        color: black;
+        font-weight: bold;
+        font-family: "Times New Roman", Times, serif;
+    }
 </style>
 <body>
     <?php
         include "dbcon.php";
         include "sidemenu.php";
+        sleep(1);
     ?>
     <center><div id="adminIndexHeader"><a href="admin.php"><img src="png/Logo4.png"></a></div>
-    <div id="blackbox"><h1 style="color: white; padding-top: 30px;">Generate Sales Report</h1>
-        <div id="button" style="margin-top: 10px; margin-bottom: 5px;"></div>
-        <a href="gsr2.php" target="blank_"><img src="png\Tick.png" alt="Correct" height= 80px; width= 85px; style="margin-left: -90px 30px -160px 30px;"></a>
-        <img src="png\Screenshot 2023-04-06 211934.png" alt="Wrong" height= 80px; width= 80px; style="margin: -90px 30px -160px 10px;">
-    </div></center>
+    <div id="blackbox"><h1 style="color: white; padding-top: 120px;">Generate Sales Report</h1>
+        <center><div id="button" style="margin-top: 10px; margin-bottom: 5px;">
+        <form  method=post>
+            <label for="date"><input type="date" id="date" name="date" style="margin-left: 10px; margin-right: 10px;"></label>
+            <input type="submit" name="Generate" value="Generate" style="margin-top: 40px;">
+        </form>
+    </div>
+    <?php
+        if(isset($_POST["Generate"])){
+            if(empty($_POST['date'])){
+                echo "<script>alert('Please enter a date')</script>";
+            } else {
+                $d = $_POST['date'];
+                $query = "SELECT * FROM purchase where purchase_date = '$d'";
+                $result = mysqli_query($connection,$query);
+                $row = mysqli_fetch_assoc($result);
+                if($row['purchase_date'] == $d){
+                    $_SESSION['date'] = $d;
+                    ?>
+                    <script>
+                        window.location.href = "vsr.php";
+                        alert("Generating Sales Report");
+                    </script>
+                    <?php
+                } else {
+                    ?>
+                    <script>
+                        window.location.href = "gsr.php";
+                        alert("Failed to generate sales report");
+                    </script>
+                    <?php
+            }
+        }
+        }
+    ?>
 </body>
 </html>

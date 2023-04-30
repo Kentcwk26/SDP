@@ -19,7 +19,7 @@
         <a href="manageuser.php">
             <div class="box">Manage Users</div>
         </a>
-        <a href="salesreport.php">
+        <a href="gsr.php">
             <div class="box">Sales Report</div>
         </a>
         <a href="cph.php">

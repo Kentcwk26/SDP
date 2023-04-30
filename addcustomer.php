@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css\style.css">
     <link rel="icon" type="image/x-icon" href="png\Icon.png">
-    <title>Edit Customer Information</title>
+    <title>Add Customer Information</title>
 </head>
 <style>
     #box{
@@ -30,20 +30,14 @@
         margin: 5px;
         padding: 4px 10px;
     }
-    input[type=textarea]{
-        width: 900px;
-        height: 40px;
-        margin: 5px;
-        padding: 4px 10px;
-    }
-    input[type=submit],input[type=reset],input[type=button]{
+    input[type=submit],input[type=reset],button{
         width: 100px;
         height: 30px;
         margin: 5px;
         border-radius: 10%;
         font-size: 14px;
     }
-    input[type=submit]:active, input[type=reset]:active, input[type=button]:active {
+    input[type=submit]:active, input[type=reset]:active, button:active {
         box-shadow: 0 5px whitesmoke;
         transform: translateY(2px);
     }
@@ -51,19 +45,25 @@
         background-color: black;
         color: white;
         font-weight:bold;
-        cursor: pointer;
     }
-    input[type=button]:hover{
+    button:hover{
         background-color: red;
-        color: white;
-        font-weight: bold;
-        cursor: pointer;
+        font-weight:bold;
     }
-    input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, input[type=textarea]:focus {
+    input[type=text]:focus, input[type=email]:focus, input[type=password]:focus {
         border: 2px solid #555;
     }
     a:visited{
         color: black;
+    }
+    .img{
+        cursor: pointer;
+        border-radius: 3px;
+        font-weight: bold;
+    }
+    #upload-photo {
+        opacity: 0;
+        position: absolute;
     }
     #bigbox{
         display: flex;
@@ -76,7 +76,7 @@
     }
     #smallbox{
         width: 98%;
-        height: 500px;
+        height: 600px;
         background-color: #f1f1f1;
         border: 1px solid black;
         border-radius: 5px;
@@ -89,11 +89,14 @@
         padding: 10px;
     }
     .circleavatar{
-        width: 160px;
-        height: 160px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 200px;
+        height: 200px;
         border-radius: 50%;
         background-color: #D9BB97;
-        margin: 10px;
+        margin: 25px 42px;
         flex-direction: column;
     }
 </style>
@@ -103,38 +106,41 @@
         include "sidemenu.php";
         sleep(1);
     ?>
-    <center><div id="adminIndex"><img src="png\Logo4.png"></div><h1 style="padding-top: 20px"><b>Edit Customer's Information</b></h1></center>
-    <?php
-        $id = $_GET['id'];
-        $query = "SELECT * FROM customer where customer_id = '$id'";
-        $result = mysqli_query($connection,$query);
-        while ($row = mysqli_fetch_assoc($result)){
-            $profile = $row['customer_profile'];
-            $id = $row['customer_id'];
-            $name = $row['customer_name'];
-            $username = $row['customer_username'];
-            $email = $row['customer_email'];
-            $contact = $row['customer_contactnumber'];
-            $address = $row['customer_homeaddress'];
-        }?>
+    <center><div id="adminIndex"><img src="png\Logo4.png"></div><h1 style="padding-top: 20px"><b>Add Customer</b></h1></center>
     <div id="box" style="margin-top: 15px;">
     <form action="#" method="post">
         <table>
             <tr>
+                <td>Customer ID: </td>
+                <td><?php
+                $prefix = "C";
+                $last_id = 0;
+                $sql = "SELECT customer_id FROM customer ORDER BY customer_id DESC LIMIT 1";
+                $result = mysqli_query($connection,$sql);
+                if (mysqli_num_rows($result) > 0) {
+                    $row = mysqli_fetch_assoc($result);
+                    $last_id = substr($row["customer_id"], 1);
+                }
+                $new_id = $prefix . ($last_id + 1);
+                ?>
+                <input type="text" name="customerid" value="<?php echo $new_id; ?>" readonly>
+                </td>
+                </tr>
+            <tr>
                 <td>Customer Name: </td>
-                <td><input type="text" required name="customername" value="<?php echo $name; ?>"></td>
+                <td><input type="text" required name="customername" placeholder="Full Name as per IC"></td>
             </tr>
             <tr>
                 <td>Customer Email: </td>
-                <td><input type="email" required name="customeremail" value="<?php echo $email; ?>"></td>
+                <td><input type="email" required email="customeremail"></td>
             </tr>
             <tr>
                 <td>Customer Contact Number: </td>
-                <td><input type="text" required name="customerphone" value="<?php echo $contact; ?>" maxlength="12" placeholder="Kindly please insert the Malaysia's contact number format: 0123456789[10] or 01123456789[11]"></td>
+                <td><input type="text" required name="customerphone" maxlength="11" pattern="[0]{1}[0-9]{9}" placeholder="Kindly please insert the Malaysia's contact number format: 0123456789[10] or 01123456789[11]"></td>
             </tr>
             <tr>
                 <td>Customer Address: </td>
-                <td><input type="textarea" required name="customeraddress" value="<?php echo $address; ?>"></td>
+                <td><input type="text" required name="customeraddress" style="height: 200px"></td>
             </tr>
         </table>
         <table>
@@ -144,91 +150,61 @@
                     <div class="avatar">
                         <a target="_blank" href="Avatar\A1.jpg">
                         <img src="Avatar\A1.jpg" alt="Avatar 1" class="circleavatar"></a>
-                        <div class="desc"><input type="radio" required name="Avatar" id="a1" value="A1" <?php if($profile == "A1"){ echo "checked";}?>><label for="a1">Avatar 1</label></div>
+                        <label for="a1"><div class="desc"><input type="radio" required name="Avatar" id="a1" value="A1">Avatar 1</div></label>
                     </div>
                     <div class="avatar">
                         <a target="_blank" href="Avatar\A2.jpg">
                         <img src="Avatar\A2.jpg" alt="Avatar 2" class="circleavatar"></a>
-                        <div class="desc"><input type="radio" required name="Avatar" id="a2" value="A2" <?php if($profile == "A2"){ echo "checked";}?>><label for="a2">Avatar 2</label></div>
+                        <label for="a2"><div class="desc"><input type="radio" required name="Avatar" id="a2" value="A2">Avatar 2</div></label>
                     </div>
                     <div class="avatar">
                         <a target="_blank" href="Avatar\A3.jpg">
                         <img src="Avatar\A3.jpg" alt="Avatar 3" class="circleavatar"></a>
-                        <div class="desc"><input type="radio" required name="Avatar" id="a3" value="A3" <?php if($profile == "A3"){ echo "checked";}?>><label for="a3">Avatar 3</label></div>
+                        <label for="a3"><div class="desc"><input type="radio" required name="Avatar" id="a3" value="A3">Avatar 3</div></label>
                     </div>
                     <div class="avatar">
                         <a target="_blank" href="Avatar\A4.jpg">
                         <img src="Avatar\A4.jpg" alt="Avatar 4" class="circleavatar"></a>
-                        <div class="desc"><input type="radio" required name="Avatar" id="a4" value="A4" <?php if($profile == "A4"){ echo "checked";}?>><label for="a4">Avatar 4</label></div>
+                        <label for="a4"><div class="desc"><input type="radio" required name="Avatar" id="a4" value="A4">Avatar 4</div></label>
                     </div>
                     <div class="avatar">
                         <a target="_blank" href="Avatar\A5.jpg">
                         <img src="Avatar\A5.jpg" alt="Avatar 5" class="circleavatar"></a>
-                        <div class="desc"><input type="radio" required name="Avatar" id="a5" value="A5" <?php if($profile == "A5"){ echo "checked";}?>><label for="a5">Avatar 5</label></div>
+                        <label for="a5"><div class="desc"><input type="radio" required name="Avatar" id="a5" value="A5">Avatar 5</div></label>
                     </div>
                     <div class="avatar">
                         <a target="_blank" href="Avatar\A6.jpg">
                         <img src="Avatar\A6.jpg" alt="Avatar 6" class="circleavatar"></a>
-                        <div class="desc"><input type="radio" required name="Avatar" id="a6" value="A6" <?php if($profile == "A6"){ echo "checked";}?>><label for="a6">Avatar 6</label></div>
+                        <label for="a6"><div class="desc"><input type="radio" required name="Avatar" id="a6" value="A6">Avatar 6</div></label>
                     </div>
                     <div class="avatar">
                         <a target="_blank" href="Avatar\A7.jpg">
                         <img src="Avatar\A7.jpg" alt="Avatar 7" class="circleavatar"></a>
-                        <div class="desc"><input type="radio" required name="Avatar" id="a7" value="A7" <?php if($profile == "A7"){ echo "checked";}?>><label for="a7">Avatar 7</label></div>
+                        <label for="a7"><div class="desc"><input type="radio" required name="Avatar" id="a7" value="A7">Avatar 7</div></label>
                     </div>
                     <div class="avatar">
                         <a target="_blank" href="Avatar\A8.jpg">
                         <img src="Avatar\A8.jpg" alt="Avatar 8" class="circleavatar"></a>
-                        <div class="desc"><input type="radio" required name="Avatar" id="a8" value="A8" <?php if($profile == "A8"){ echo "checked";}?>><label for="a8">Avatar 8</label></div>
+                        <label for="a8"><div class="desc"><input type="radio" required name="Avatar" id="a8" value="A8">Avatar 8</div></label>
                     </div>
                     <div class="avatar">
                         <a target="_blank" href="Avatar\A9.jpg">
                         <img src="Avatar\A9.jpg" alt="Avatar 9" class="circleavatar"></a>
-                        <div class="desc"><input type="radio" required name="Avatar" id="a9" value="A9" <?php if($profile == "A9"){ echo "checked";}?>><label for="a9">Avatar 9</label></div>
+                        <label for="a9"><div class="desc"><input type="radio" required name="Avatar" id="a9" value="A9">Avatar 9</div></label>
                     </div>
                     <div class="avatar">
                         <a target="_blank" href="Avatar\A10.jpg">
                         <img src="Avatar\A10.jpg" alt="Avatar 10" class="circleavatar"></a>
-                        <div class="desc"><input type="radio" required name="Avatar" id="a10" value="A10" <?php if($profile == "A10"){ echo "checked";}?>><label for="a10">Avatar 10</label></div>
-                    </div>
-                    <div class="avatar">
-                        <a target="_blank" href="Avatar\A11.jpg">
-                        <img src="Avatar\A11.jpg" alt="Avatar 11" class="circleavatar"></a>
-                        <div class="desc"><input type="radio" required name="Avatar" id="a11" value="A11" <?php if($profile == "A11"){ echo "checked";}?>><label for="a11">Avatar 11</label></div>
-                    </div>
-                    <div class="avatar">
-                        <a target="_blank" href="Avatar\A12.jpg">
-                        <img src="Avatar\A12.jpg" alt="Avatar 12" class="circleavatar"></a>
-                        <div class="desc"><input type="radio" required name="Avatar" id="a12" value="A12" <?php if($profile == "A12"){ echo "checked";}?>><label for="a12">Avatar 12</label></div>
-                    </div>
-                    <div class="avatar">
-                        <a target="_blank" href="Avatar\A13.jpg">
-                        <img src="Avatar\A13.jpg" alt="Avatar 13" class="circleavatar"></a>
-                        <div class="desc"><input type="radio" required name="Avatar" id="a13" value="A13" <?php if($profile == "A13"){ echo "checked";}?>><label for="a13">Avatar 13</label></div>
-                    </div>
-                    <div class="avatar">
-                        <a target="_blank" href="Avatar\A14.jpg">
-                        <img src="Avatar\A14.jpg" alt="Avatar 14" class="circleavatar"></a>
-                        <div class="desc"><input type="radio" required name="Avatar" id="a14" value="A14" <?php if($profile == "A14"){ echo "checked";}?>><label for="a14">Avatar 14</label></div>
-                    </div>
-                    <div class="avatar">
-                        <a target="_blank" href="Avatar\A15.jpg">
-                        <img src="Avatar\A15.jpg" alt="Avatar 15" class="circleavatar"></a>
-                        <div class="desc"><input type="radio" required name="Avatar" id="a15" value="A15" <?php if($profile == "A15"){ echo "checked";}?>><label for="a15">Avatar 15</label></div>
-                    </div>
-                    <div class="avatar">
-                        <a target="_blank" href="Avatar\A16.jpg">
-                        <img src="Avatar\A16.jpg" alt="Avatar 16" class="circleavatar"></a>
-                        <div class="desc"><input type="radio" required name="Avatar" id="a16" value="A16" <?php if($profile == "A16"){ echo "checked";}?>><label for="a16">Avatar 16</label></div>
+                        <label for="a10"><div class="desc"><input type="radio" required name="Avatar" id="a10" value="A10">Avatar 10</div></label>
                     </div>
                 </div><p>Click the picture to see a clearer profile picture</p></center>
             </tr>
         </table> 
         <table>
             <tr>
-                <td colspan="2"><br><input type="submit" name="submit" value="Update"></td>
+                <td colspan="2"><br><input type="submit" name="submit" value="Add"></td></div>
                 <td colspan="2"><br><input type="reset" name="reset" value="Reset"></td>
-                <td colspan="2"><br><input type="button" value="Cancel" onclick="window.open('managecustomer.php','_self')"></td>
+                <td colspan="2"><br><button><a href="managecustomer.php">Cancel</a></button>
             </tr>
         </table>
     </form>
@@ -255,12 +231,15 @@
                         if (!ctype_digit($phone) && !strlen($phone)<=11){
                             echo "<script>alert('Incorrect Contact Number / Format')</script>";
                         } else{
-                            $customerprofile = $_POST['Avatar'];
+                            $customerid = $_POST['customerid'];
+                            $customeravatar = $_POST['avatar'];
                             $customername = $_POST['customername'];
+                            $customerusername = $_POST['username'];
+                            $customerpassword = $_POST['password'];
                             $customeremail = $_POST['customeremail'];
                             $customerphone = $_POST['customerphone'];
                             $customeraddress = $_POST['customeraddress'];
-                            $sql = "UPDATE customer SET customer_profile = '$customerprofile', customer_name = '$customername', customer_email = '$customeremail', customer_contactnumber = '$customerphone', customer_homeaddress = '$customeraddress' WHERE customer_id = '$id'";
+                            $sql = "INSERT INTO customer(`customer_profile`,`customer_id`, `customer_name`, `customer_username`, `customer_password`,`customer_email`, `customer_contactnumber`, `customer_homeaddress`) VALUES ('$customeravatar','$customerid', '$customername', 'guest', 'customer123', '$customeremail', '$customerphone', '$customeraddress')";
                             $result = mysqli_query($connection,$sql);
                             if($result){
                                 ?>
