@@ -40,7 +40,7 @@ if(isset($_POST['ICNo'])){
   <head>
     <meta charset="utf-8">
     <title>Pet Paradise Pet Care System</title>
-    <link rel="stylesheet" type="text/css" href="style2.css">
+    <link rel="stylesheet" type="text/css" href="css/style2.css">
     <link rel="icon" href="img/profile.jpg">
   </head>
 <body>

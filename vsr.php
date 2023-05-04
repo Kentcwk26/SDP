@@ -61,7 +61,7 @@
                     <tr>
                         <th>Product ID</th>
                         <th>Product Name</th>
-                        <th>Product Price</th>
+                        <th>Purchase Quantity</th>
                         <th>Purchase Date</th>
                     </tr>
                 <?php
