@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Generate Receipt</title>
-    <link rel="icon" type="image/x-icon" href="Icon.png" >
+    <link rel="icon" type="image/x-icon" href="png/Icon.png" >
 </head>
 <style>
     body{
@@ -59,6 +59,6 @@
     <br>
     <br>
     <br>
-    <center><div id="my-button"><a href="mainindex.php">Back</a></div>  <div id="my-button"><a href="generatereceipt2.php">Generate</a></div></center>
+    <center><div id="my-button"><a href="staffmain.php">Back</a></div>  <div id="my-button"><a href="generatereceipt2.php">Generate</a></div></center>
 </body>
 </html>

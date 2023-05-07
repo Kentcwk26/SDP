@@ -21,16 +21,10 @@
         </a>
         <a href="gsr.php">
             <div class="box">Sales Report</div>
-        </a>
-        <a href="cph.php">
-            <div class="box">Customer<br>Purchase History</div>
-        </a>
-    </div>
+    </div>            
     <div style="display:flex; justify-content: center;">
-        <a href="cbh.php">
-            <div class="box">Customer<br>Booking History</div>
         </a>
-        <a href="staff.php">
+        <a href="staffmain.php">
             <div class="box">Staff Page</div>
         </a>
         <a href="vet.php">

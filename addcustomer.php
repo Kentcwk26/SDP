@@ -30,14 +30,14 @@
         margin: 5px;
         padding: 4px 10px;
     }
-    input[type=submit],input[type=reset],button{
+    input[type=submit],input[type=reset],input[type=button]{
         width: 100px;
         height: 30px;
         margin: 5px;
         border-radius: 10%;
         font-size: 14px;
     }
-    input[type=submit]:active, input[type=reset]:active, button:active {
+    input[type=submit]:active, input[type=reset]:active, input[type=button]:active {
         box-shadow: 0 5px whitesmoke;
         transform: translateY(2px);
     }
@@ -46,15 +46,12 @@
         color: white;
         font-weight:bold;
     }
-    button:hover{
+    input[type=button]:hover{
         background-color: red;
         font-weight:bold;
     }
     input[type=text]:focus, input[type=email]:focus, input[type=password]:focus {
         border: 2px solid #555;
-    }
-    a:visited{
-        color: black;
     }
     .img{
         cursor: pointer;
@@ -125,7 +122,7 @@
                 ?>
                 <input type="text" name="customerid" value="<?php echo $new_id; ?>" readonly>
                 </td>
-                </tr>
+            </tr>
             <tr>
                 <td>Customer Name: </td>
                 <td><input type="text" required name="customername" placeholder="Full Name as per IC"></td>
@@ -202,9 +199,9 @@
         </table> 
         <table>
             <tr>
-                <td colspan="2"><br><input type="submit" name="submit" value="Add"></td></div>
-                <td colspan="2"><br><input type="reset" name="reset" value="Reset"></td>
-                <td colspan="2"><br><button><a href="managecustomer.php">Cancel</a></button>
+                <td colspan="2"><input type="submit" name="submit" value="Add"></td></div>
+                <td colspan="2"><input type="reset" name="reset" value="Reset"></td>
+                <td colspan="2"><input type="button" value="Cancel" onclick="window.open('managecustomer.php','_self')">
             </tr>
         </table>
     </form>

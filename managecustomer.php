@@ -36,7 +36,6 @@
         color: orange;
     }
     a:visited{
-        text-decoration: none;
         color: blue;
     }
     #smallbox{
@@ -61,27 +60,27 @@
         <?php
             $sql = "SELECT * FROM customer";
             $result = mysqli_query($connection,$sql);
-                ?>
-                <tr>
-                    <th>Name</th>
-                    <th>Action</th>
-                </tr>
-                <?php
-                while ($row = mysqli_fetch_assoc($result)){
-                    ?>
-                    <tr>
-                        <td>
-                            <a href="customerinfo.php?id=<?php echo $row["customer_id"]; ?>"><?php echo $row["customer_name"]; ?></a>
-                        </td>
-                        <td>   
-                            <a href="editcustomer.php?id=<?php echo $row["customer_id"]; ?>">Edit</a>
-                            <a href="deletecustomer.php?id=<?php echo $row["customer_id"]; ?>">Delete</a>
-                        </td>
-                    </tr>
-                <?php
-                }   
-                mysqli_close($connection);
-            ?>
+        ?>
+        <tr>
+            <th>Name</th>
+            <th>Action</th>
+        </tr>
+        <?php
+            while ($row = mysqli_fetch_assoc($result)){
+        ?>
+            <tr>
+                <td>
+                    <a href="customerinfo.php?id=<?php echo $row["customer_id"]; ?>"><?php echo $row["customer_name"]; ?></a>
+                </td>
+                <td>   
+                    <a href="editcustomer.php?id=<?php echo $row["customer_id"]; ?>">Edit</a>
+                    <a href="deletecustomer.php?id=<?php echo $row["customer_id"]; ?>">Delete</a>
+                </td>
+            </tr>
+        <?php
+        }   
+            mysqli_close($connection);
+        ?>
         </tr>
     </table>
     <div id="smallbox"><label><a href="addcustomer.php" style="text-decoration: none; font-size: 40px; color: black;">+</a></label></div>

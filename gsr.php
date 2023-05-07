@@ -35,6 +35,22 @@
         font-weight: bold;
         font-family: "Times New Roman", Times, serif;
     }
+    input[type=submit]{
+        width: 100px;
+        height: 30px;
+        margin: 5px;
+        font-weight:bold;
+    }
+    input[type=submit]:hover{
+        background-color: green;
+        border-color: green;
+        color: white;
+        font-weight:bold;
+    }
+    input[type=submit]:active{
+        box-shadow: 0 5px grey;
+        transform: translateY(2px);
+    }
 </style>
 <body>
     <?php
@@ -74,8 +90,8 @@
                         alert("Failed to generate sales report");
                     </script>
                     <?php
+                }
             }
-        }
         }
     ?>
 </body>

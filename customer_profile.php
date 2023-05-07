@@ -7,7 +7,7 @@
     <link rel="icon" href="png/profile.jpg">
   </head>
 <body>
-	
+	<script src="https://widget.flowxo.com/embed.js" data-fxo-widget="eyJ0aGVtZSI6IiNlMGRjNmIiLCJ3ZWIiOnsiYm90SWQiOiI2NDU3MzFhMGU5YzUyZjAwMjg4OWQwNGIiLCJ0aGVtZSI6IiNlMGRjNmIifX0=" async defer></script>
 <!-- Intro -->
 <div id="intro">
 <?php include('customer_header.php') ?>
@@ -44,7 +44,6 @@
 								<td>Email Address:</td>
 								<td><input type="text" name="Email" placeholder="e.g. ivanwang913@gmail.com" size="25" required></td>
 							</tr>
-
 							<tr>
 								<td>Pet Name:</td>
 								<td><input type="text" name="PetName" placeholder="e.g. Doggo" size="25" required></td>

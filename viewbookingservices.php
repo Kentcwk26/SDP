@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generate Financial Report</title>
-    <link rel="icon" type="image/x-icon" href="Icon.png" >
+    <title>View Booking Services</title>
+    <link rel="icon" type="image/x-icon" href="png/Icon.png" >
 </head>
 <style>
     body{
@@ -35,25 +35,35 @@
         border-radius: 5px;
         margin-left: 50px;
         margin-right: 50px;
-
     }
 
-    #user-input{
-        height:320px;
-        width: 700px;
+    #word{
+        margin-left:550px;
+    }
+
+    #contentblock{height:200px;width: 620px;
+        display:block;
+    float: left;
+    background-color: white;
+
+    }
+   
+    #contentblock1{height:200px;width: 620px;
+        display:block;
+    float: right;
+    background-color: white;
+
     }
 
 </style>
 <body>
-<?php
+    <?php
+        include "dbcon.php";
         include "header1.php";
     ?>
     <br>
-    <b><p style="text-align:center"><u>Generate Financial Report</u></p></b>
-    <br>
-    <br>
-    <center><textarea id="user-input" name="user-input"></textarea></center>
-    <br>
-    <center><div id="my-button"><a href="mainindex.php">Back</a></div>  <div id="my-button"><a href="#">Generate</a></div></center>
+    <b><h1 style="text-align:center"><u>View Booking Services</u></h1></b>
+
+    <center><div id="my-button"><a href="managebookingservice.php">Back</a></div></center>
 </body>
 </html>

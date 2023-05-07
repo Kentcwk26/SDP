@@ -4,6 +4,14 @@
 	<title>Simple Side Menu</title>
 	<link rel="stylesheet" href="css\sidemenu.css">
 </head>
+<style>
+	a{
+		text-decoration: none;
+	}
+	a:hover{
+		text-decoration-line: underline;
+	}
+</style>
 <body>
 	<div class="sidebar">
 		<ul style="margin-top: 80px;">

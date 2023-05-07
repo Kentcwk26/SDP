@@ -2,9 +2,9 @@
 session_start();
 include 'dbcon.php';
 if (isset($_POST['login'])) {
-    $email =$_POST['txtEmail'];
+    $username =$_POST['txtUsername'];
     $password = $_POST['txtPassword'];
-    $query = "SELECT * FROM customer WHERE customer_email='$email' AND customer_password='$password'";
+    $query = "SELECT * FROM customer WHERE customer_username='$username' AND customer_password='$password'";
     $results = mysqli_query($connection, $query);
     $row = mysqli_fetch_assoc($results);
     $count = mysqli_num_rows($results); // 1 or 0
@@ -16,7 +16,31 @@ if (isset($_POST['login'])) {
         //header("Location: mainPage.php?name=" . $fullname); // run with it
         echo "<script>location.href = 'mainindex.php'</script>"; 
     } else {
-        echo "<script>alert('Invalid credentials. Please try again!');</script>";
+        $query = "SELECT * FROM staff WHERE staff_username='$username' AND staff_password='$password'";
+        $results = mysqli_query($connection, $query);
+        $count = mysqli_num_rows($results);
+
+        if ($count == 1) {
+            $row = mysqli_fetch_assoc($results);
+            $_SESSION['Staff_ID'] = $row['staff_id'];
+            echo "<script>alert('Congratulations! You are logged in as staff.');</script>";
+            echo "<script>location.href = 'staff.php'</script>";
+
+        } else {
+            $query = "SELECT * FROM admin WHERE admin_username='$username' AND admin_password='$password'";
+            $results = mysqli_query($connection, $query);
+            $count = mysqli_num_rows($results);
+
+            if ($count == 1) {
+                $row = mysqli_fetch_assoc($results);
+                $_SESSION['Admin_ID'] = $row['admin_id'];
+                echo "<script>alert('Congratulations! You are logged in as an admin.');</script>";
+                echo "<script>location.href = 'admin.php'</script>";      
+            
+            } else {
+                echo "<script>alert('Invalid credentials. Please try again!');</script>";
+            }
+        }
     }
 }
 
@@ -83,11 +107,9 @@ mysqli_close($connection);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login | Register</title>
+    <link rel="icon" type="image/x-icon" href="png\Icon.png">
     <link rel="stylesheet" href="css\style3.css">
-    <style>
-        
-    </style>
 
 </head>
 <body>
@@ -117,8 +139,8 @@ mysqli_close($connection);
             <form action="#" method="POST">
                 <div class="input-box">
                     <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
-                    <input type="email" name="txtEmail" required>
-                    <label>Email</label>
+                    <input type="text" name="txtUsername" required>
+                    <label>Username</label>
                 </div> 
                 <div class="input-box">
                     <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
@@ -273,7 +295,7 @@ mysqli_close($connection);
 
     </div>
 
-    <script src="script3.js"></script>
+    <script src="js/script3.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 

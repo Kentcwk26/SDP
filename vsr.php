@@ -14,13 +14,13 @@
     #blackbox{
         text-align: center;
         background-color: black;
-        width: 100%;
-        height: 1020px;
+        width: 1500px;
+        height: 800px;
     }
     #greycontent{
         background-color: #D9D9D9;
-        height: 800px;
-        width: 1200px;
+        height: 600px;
+        width: 1000px;
         margin: auto;
     }
     table,tr,td,th{
@@ -72,13 +72,13 @@
                         echo "<td>$row[purchase_date]</td></tr>";
                     }            
             } else {
-                    echo "<br>","No records found.";
+                    echo "<br>","No records found. <br>";
                 }?>
                 </table>
             <?php
             echo "<br>", "Top Sales: ";
             ?>
-            <table style="margin-top: 8px; margin-left: auto; margin-right: auto;">
+            <table style="margin-top: 16px; margin-left: auto; margin-right: auto;">
                 <tr>
                     <th>Product ID</th>
                     <th>Product Name</th>
@@ -97,16 +97,15 @@
                             <?php
                         }
                     } else {
-                        echo "<br>","No records found.";
+                        echo "<br>","No records found. <br>";
                     }
                 ?>
             </table>
             </div>
+            <div style="cursor: pointer;"><img src="png\Tick.png" alt="Correct" height= 80px; width= 85px; style="margin-left: 18px; float:left;" onclick="window.print()"></div>
+            <div style="cursor: pointer;"><img src="png\Screenshot 2023-04-06 211934.png" alt="Wrong" height= 80px; width= 80px; style="margin-right: 20px; float:right; cursor: pointer;" onclick="window.open('gsr.php','_SELF')"></div>
             <div style="clear:both;"></div>
         </div>
-        <div><img src="png\Tick.png" alt="Correct" height= 80px; width= 85px; style="margin-left: 18px; float:left;"></div>
-        <div><img src="png\Screenshot 2023-04-06 211934.png" alt="Wrong" height= 80px; width= 80px; style="margin-right: 20px; float:right;"></div>
-        <div style="clear:both;"></div>
     </div></center>
 </body>
 </html>

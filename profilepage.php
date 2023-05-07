@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Staff Profile Page</title>
-    <link rel="icon" type="image/x-icon" href="Icon.png" >
+    <link rel="icon" type="image/x-icon" href="png/Icon.png" >
 </head>
 <style>
     body{
@@ -71,7 +71,7 @@
     <div id="word" style="color:white">Staff Username:</div> <br>
     <div id="word" style="color:white">Password:</div><br>
     <div id="word" style="color:white">Contact Number:</div> <br>
-    <div id="word" style="color:white">Job:</div> 
+    <div id="word" style="color:white">Job:</div>
     <br>
     <br>
     <center><div id="my-button"><a href="#">Edit</a></div> <div id="my-button"><a href="#">Log Out</a></div></center>

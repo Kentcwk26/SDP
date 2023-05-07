@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View Product</title>
-    <link rel="icon" type="image/x-icon" href="Icon.png" >
+    <title>Generate Receipt</title>
+    <link rel="icon" type="image/x-icon" href="png/Icon.png" >
 </head>
 <style>
     body{
@@ -35,6 +35,12 @@
         border-radius: 5px;
         margin-left: 50px;
         margin-right: 50px;
+
+    }
+
+    #user-input{
+        height:320px;
+        width: 700px;
     }
 
 </style>
@@ -43,19 +49,11 @@
         include "header1.php";
     ?>
     <br>
-    <b><p style="text-align:center"><u>View Product</u></p></b>
-    <br>
-    <center><img src="dogfood.jpg" height=150px width=auto>
-    <u> Product(Product ID):</u>
-    <p>Price:</p>
-    <p>Quantity:</p>
-    Description:
-    </center>
+    <b><p style="text-align:center"><u>Generate Receipt</u></p></b>
     <br>
     <br>
+    <center><textarea id="user-input" name="user-input"></textarea></center>
     <br>
-    <br>
-    <br>
-    <center><div id="my-button"><a href="WHmanageproducts.php">Back</a></div>  <div id="my-button"><a href="editproduct.php">Edit</a></div></center>
+    <center><div id="my-button"><a href="generatereceipt1.php">Back</a></div>  <div id="my-button"><a href="#">Generate</a></div></center>
 </body>
 </html>

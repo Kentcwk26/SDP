@@ -60,14 +60,6 @@
         font-weight:bold;
         cursor: pointer;
     }
-    .circleavatar{
-        width: 160px;
-        height: 160px;
-        border-radius: 50%;
-        background-color: #D9BB97;
-        margin: 10px;
-        flex-direction: column;
-    }
 </style>
 </head>
 <body>

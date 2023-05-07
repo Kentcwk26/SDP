@@ -7,7 +7,7 @@
     <link rel="icon" href="png/profile.jpg">
   </head>
 <body>
-	
+
 <!-- Intro -->
 <div id="intro">
 <?php include('customer_header.php') ?>
@@ -32,8 +32,6 @@
         <th>Pet Name</th>
         <th>Date</th>
         <th>Time</th>
-
-        
     </tr>
         
 <?php

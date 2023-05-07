@@ -116,7 +116,8 @@
             $email = $row['customer_email'];
             $contact = $row['customer_contactnumber'];
             $address = $row['customer_homeaddress'];
-        }?>
+        }
+    ?>
     <div id="box" style="margin-top: 15px;">
     <form action="#" method="post">
         <table>
