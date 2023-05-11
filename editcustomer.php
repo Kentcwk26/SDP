@@ -24,14 +24,14 @@
         color: white;
         font-weight:bold;
     }
-    input[type=text],input[type=email],input[type=password]{
-        width: 800px;
+    input[type=text],input[type=email],input[type=password], input[type=number]{
+        width: 1250px;
         height: 30px;
         margin: 5px;
         padding: 4px 10px;
     }
-    input[type=textarea]{
-        width: 900px;
+    select{
+        width: 1274px;
         height: 40px;
         margin: 5px;
         padding: 4px 10px;
@@ -115,12 +115,25 @@
             $username = $row['customer_username'];
             $email = $row['customer_email'];
             $contact = $row['customer_contactnumber'];
-            $address = $row['customer_homeaddress'];
+        }
+        $query2 = "SELECT customer.customer_name, pet.pet_id, pet.pet_name,pet.pet_age, pet.pet_type, pet.pet_gender, pet.pet_allergy FROM customer INNER JOIN pet ON customer.customer_name = pet.customer_name WHERE customer.customer_name='$name'";
+        $result2 = mysqli_query($connection,$query2);
+        while ($row1 = mysqli_fetch_assoc($result2)){
+            $petid = $row1['pet_id'];
+            $petname = $row1['pet_name'];
+            $petage = $row1['pet_age'];
+            $pettype = $row1['pet_type'];
+            $petgender = $row1['pet_gender'];
+            $petallergy = $row1['pet_allergy']; 
         }
     ?>
     <div id="box" style="margin-top: 15px;">
     <form action="#" method="post">
         <table>
+            <tr>
+                <td>Customer ID: </td>
+                <td><input type="text" required name="customerid" value="<?php echo $id; ?>"></td>
+            </tr>
             <tr>
                 <td>Customer Name: </td>
                 <td><input type="text" required name="customername" value="<?php echo $name; ?>"></td>
@@ -132,10 +145,6 @@
             <tr>
                 <td>Customer Contact Number: </td>
                 <td><input type="text" required name="customerphone" value="<?php echo $contact; ?>" maxlength="12" placeholder="Kindly please insert the Malaysia's contact number format: 0123456789[10] or 01123456789[11]"></td>
-            </tr>
-            <tr>
-                <td>Customer Address: </td>
-                <td><input type="textarea" required name="customeraddress" value="<?php echo $address; ?>"></td>
             </tr>
         </table>
         <table>
@@ -224,6 +233,42 @@
                     </div>
                 </div><p>Click the picture to see a clearer profile picture</p></center>
             </tr>
+            <tr>
+                <td>Pet ID: </td>
+                <td><input type="text" required name="petid" value="<?php echo $petid; ?>"></td>
+            </tr>
+            <tr>
+                <td>Pet Name: </td>
+                <td><input type="text" required name="petname" value="<?php echo $petname; ?>"></td>
+            </tr>
+            <tr>
+                <td>Pet Age: </td>
+                <td><input type="number" required name="petage" min=0 max=5 step=0.5 value="<?php echo $petage; ?>"></td>
+            </tr>
+            <tr>
+                <td>Pet Type: </td>
+                <td><label for="pettype"></label>
+                <select name="pettype" id="pettype">
+                    <option value="Dog" <?php if($pettype == "Dog"){ echo "selected";}?>>Dog</option>
+                    <option value="Cat" <?php if($pettype == "Cat"){ echo "selected";}?>>Cat</option>
+                    <option value="Rabbit" <?php if($pettype == "Rabbit"){ echo "selected";}?>>Rabbit</option>
+                    <option value="Hamster" <?php if($pettype == "Hamster"){ echo "selected";}?>>Hamster</option>
+                    <option value="Bird" <?php if($pettype == "Bird"){ echo "selected";}?>>Bird</option>
+                    <option value="Turtle" <?php if($pettype == "Turtle"){ echo "selected";}?>>Turtle</option>
+                </select></td>
+            </tr>
+            <tr>
+                <td>Pet Gender: </td>
+                <td><label for="petgender"></label>
+                <select name="petgender" id="petgender">
+                    <option value="Male" <?php if($petgender == "Male"){ echo "selected";}?>>Male</option>
+                    <option value="Female" <?php if($petgender == "Female"){ echo "selected";}?>>Female</option>
+                </select></td>
+            </tr>
+            <tr>
+                <td>Pet Allergy: </td>
+                <td><input type="text" required name="petallergy" value="<?php echo $petallergy; ?>"></td>
+            </tr>
         </table> 
         <table>
             <tr>
@@ -241,13 +286,15 @@
             return $data;
         }
         if(isset($_POST['submit'])){
-            if (empty($_POST["customername"]) or empty($_POST["customeremail"]) or empty($_POST["customerphone"] or empty($_POST["customeraddress"] or empty($_POST("Avatar"))))) {
-                echo "<script>alert('All the customer details are required')</script>";
+            if (empty($_POST["customername"]) or empty($_POST["customeremail"]) or empty($_POST["customerphone"]) or empty($_POST["Avatar"]) or empty($_POST["petname"]) or empty($_POST["petallergy"])){
+                echo "<script>alert('All the details are required')</script>";
             } else {
                 $name = test_input($_POST["customername"]);
                 $email = test_input($_POST["customeremail"]);
                 $phone = test_input($_POST["customerphone"]);
-                if (!preg_match("/^[a-zA-Z-' ]*$/",$name)){
+                $petname = test_input($_POST['petname']);
+                $petallergy = test_input($_POST['petallergy']);
+                if (!preg_match("/^[a-zA-Z-' ]*$/",$name) or (!preg_match("/^[a-zA-Z-' ]*$/",$petname))){
                     echo "<script>alert('Wrong input in the name section!')</script>";
                 } else {
                     if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
@@ -260,29 +307,30 @@
                             $customername = $_POST['customername'];
                             $customeremail = $_POST['customeremail'];
                             $customerphone = $_POST['customerphone'];
-                            $customeraddress = $_POST['customeraddress'];
-                            $sql = "UPDATE customer SET customer_profile = '$customerprofile', customer_name = '$customername', customer_email = '$customeremail', customer_contactnumber = '$customerphone', customer_homeaddress = '$customeraddress' WHERE customer_id = '$id'";
+                            $petid = $_POST['petid'];
+                            $petname = $_POST['petname'];
+                            $petage = $_POST['petage'];
+                            $pettype = $_POST['pettype'];
+                            $petgender = $_POST['petgender'];
+                            $petallergy = $_POST['petallergy'];
+                            $sql = "UPDATE customer SET customer_profile = '$customerprofile', customer_name = '$customername', customer_email = '$customeremail', customer_contactnumber = '$customerphone' WHERE customer_id = '$id'";
+                            $sql2 = "UPDATE `pet` SET `pet_name`='$petname',`pet_age`='$petage',`pet_type`='$pettype',`pet_gender`='$petgender',`pet_allergy`='$petallergy',`customer_name`='$customername',`customer_contact`='$customerphone' WHERE `pet_id`='$petid'";
                             $result = mysqli_query($connection,$sql);
                             if($result){
-                                ?>
-                                <script>
-                                    window.location.href = "managecustomer.php";
-                                    alert("Customer Updated Successfully");
-                                </script>
-                                <?php
+                                $result2 = mysqli_query($connection,$sql2);
+                                if($result2){
+                                    echo "<script>alert('Updated Successfully!')</script>";
+                                    echo "<script>window.open('managecustomer.php','_self')</script>";
+                                } else {
+                                    echo "<script>alert('Error, please try again!')</script>";
+                                }
+                            } else {
+                                echo "<script>alert('Failed to update, please try again!')</script>";
                             }
-                            else{
-                                ?>
-                                <script>
-                                    window.location.href = "managecustomer.php";
-                                    alert("Customer Update Failed");
-                                </script>
-                            <?php
-                    }
-                } 
-                } 
+                        } 
+                    }    
+                }
             }
-        }
         }
         ?>
     <?php

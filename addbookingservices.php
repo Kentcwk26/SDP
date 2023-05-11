@@ -50,7 +50,7 @@
     ?>
     <br>
     <b><h1 style="text-align:center; padding-bottom: 10px;"><u>Add Booking Services</u></h1></b>
-    <form action="#" method="post">
+    <form method="post">
         <table class="center">
             <tr>
                 <td><label for="BookingService" style="color: white">Booking Service:</label></td>
@@ -69,8 +69,38 @@
                 <td><input type="datetime-local" id="user-input" name="booking-datetime"></td>
             </tr>
             <tr>
-                <td><label for="user-input" style="color: white">Customer Name:</label></td>
-                <td><input type="text" id="user-input" name="customer-name"></td>
+                <td><label for="user-input" style="color: white">Customer:</label></td>
+                <td>
+                    <input list="customer" name="customer" style="width:600px; height: 40px; font-family: Times New Roman; font-size: 14px; padding-left: 5px; padding-right: 10px;">
+                    <datalist id="customer">
+                        <?php
+                            $query = "SELECT customer_id, customer_name FROM customer";
+                            $result = mysqli_query($connection,$query);
+                            while ($row = mysqli_fetch_assoc($result)){
+                                $customer_id= $row['customer_id'];
+                                $customer_name= $row['customer_name'];
+                                echo "<option value='$customer_id'>$customer_name</option>";
+                            }
+                        ?>
+                    </datalist>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="user-input" style="color: white">Pet:</label></td>
+                <td>
+                    <input list="pet" name="pet" style="width:600px; height: 40px; font-family: Times New Roman; font-size: 14px; padding-left: 5px; padding-right: 10px;">
+                    <datalist id="pet">
+                        <?php
+                            $query1 = "SELECT pet_id, pet_name FROM pet";
+                            $result1 = mysqli_query($connection,$query1);
+                            while ($row = mysqli_fetch_assoc($result1)){
+                                $pet_id= $row['pet_id'];
+                                $pet_name= $row['pet_name'];
+                                echo "<option value='$pet_id'>$pet_name</option>";
+                            }
+                        ?>
+                    </datalist>
+                </td>
             </tr>
         </table>
         <table class="center" style="margin-top: 20px;">
@@ -89,50 +119,34 @@
             return $data;
         }
         if(isset($_POST['Submit'])){
-            if (empty($_POST["customer-name"]) or empty($_POST["booking-datetime"]) or empty($_POST["BookingService"])) {
-                echo "<script>alert('All the details are required in order to make the bookings')</script>";
+            $request_datetime = $_POST['booking-datetime'];
+            $BookingService = $_POST['BookingService'];
+            $query = "SELECT appointment_service, appointment_datetime FROM appointment WHERE appointment_service = 'Pet Medical Services' OR appointment_service = 'Pet Grooming' AND appointment_datetime= '$request_datetime'";
+            $result = $connection->query($query);
+            $row = $result->fetch_assoc();
+            $booking_service = $row['appointment_service'];
+            $appointment_datetime = $row['appointment_datetime'];
+            if ($booking_service == $BookingService and $appointment_datetime == $request_datetime){
+                echo "<script>alert('The booking service is already booked, kindly choose another day.')</script>";
             } else {
-                $name = test_input($_POST["customer-name"]);
-                if (!preg_match("/^[a-zA-Z-' ]*$/",$name)){
-                    echo "<script>alert('Wrong input in the name section!')</script>";
+                $prefix = "A";
+                $last_id = 0;
+                $sql2 = "SELECT appointment_id FROM appointment ORDER BY appointment_id DESC LIMIT 1";
+                $result = mysqli_query($connection,$sql2);
+                if (mysqli_num_rows($result) > 0) {
+                    $row = mysqli_fetch_assoc($result);
+                    $last_id = substr($row["appointment_id"], 1);
+                }
+                $new_id = $prefix . ($last_id + 1);
+                $AppointmentID = $new_id;
+                $customer = $_POST['customer'];
+                $pet = $_POST['pet'];
+                $sql5 = "INSERT INTO `appointment`(`customer_id`, `pet_id`, `appointment_id`, `appointment_datetime`, `appointment_service`) VALUES ('$customer', '$pet', '$AppointmentID', '$request_datetime', '$BookingService')";
+                if(mysqli_query($connection, $sql5)){
+                    echo "<script>alert('Booking Service added successfully!')</script>";
+                    echo "<script>window.open('managebookingservices.php','_self')</script>";
                 } else {
-                    $request_datetime = $_POST['booking-datetime'];
-                    $query = "SELECT booking_service, appointment_datetime FROM appointment WHERE booking_service = 'Pet Medical Services' OR booking_service = 'Pet Grooming' AND appointment_datetime= '$request_datetime'";
-                    $sql1 = "SELECT `booking_datetime`,`booking_service` FROM `booking`";
-                    $sql2 = "SELECT `customer_name` FROM `customer` where customer_name ='$name'";
-                    $result = $connection->query($query);
-                    $result1 = $connection->query($sql1);
-                    $result2 = $connection->query($sql2);
-                    if ($result->num_rows > 0) {
-                        echo "<script>alert('The booking service is not available at the moment!')</script>";
-                    } else if ($result1->num_rows > 0) {
-                        echo "<script>alert('The booking service is not available at the moment!')</script>";
-                    } else if ($result2->num_rows == 0) {
-                        echo "<script>alert('The customer name is not available at the moment!')</script>";
-                    } else {
-                        $prefix = "A";
-                        $last_id = 0;
-                        $sql4 = "SELECT appointment_id FROM appointment ORDER BY appointment_id DESC LIMIT 1";
-                        $result = mysqli_query($connection,$sql4);
-                        if (mysqli_num_rows($result) > 0) {
-                            $row = mysqli_fetch_assoc($result);
-                            $last_id = substr($row["appointment_id"], 1);
-                        }
-                        $new_id = $prefix . ($last_id + 1);
-                        $AppointmentID = $new_id;
-                        $BookingService = $_POST['BookingService'];
-                        $Booking = $_POST['booking-datetime'];
-                        $CustomerName = $_POST['customer-name'];
-                        $booking_datetime = $_POST["booking_datetime"];
-                        $booking_service = $_POST["booking_service"];
-                        $sql5 = "INSERT INTO appointment (`customer_name`, `appointment_id`, `appointment_datetime`, `booking_service`) VALUES ('$CustomerName', '$AppointmentID', '$Booking', '$BookingService')";
-                        if(mysqli_query($connection, $sql5)){
-                            echo "<script>alert('Booking Service added successfully!')</script>";
-                            echo "<script>window.open('managebookingservices.php','_self')</script>";
-                        } else {
-                            echo "<script>alert('Booking Service failed to add!')</script>";
-                        }
-                    }
+                    echo "<script>alert('Booking Service failed to add!')</script>";
                 }
             }
         }

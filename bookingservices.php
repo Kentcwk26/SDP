@@ -27,13 +27,18 @@
     tr{
       background-color: #D9D9D9;
     }
-    #my-button{ 
+    #my-button, input[type=button]{ 
         background-color: #f7d0af;
         padding: 10px 20px;
         display: inline-block;
         border-radius: 5px;
-        margin-left: 50px;
+        margin-left: 80px;
         margin-right: 50px;
+        cursor: pointer;
+    }
+    input[type=button]:active{
+      box-shadow: 0 5px;
+      transform: translateY(2px);
     }
     #user-input{
         height: 30px;
@@ -78,6 +83,7 @@
           <th>Pet</th>
           <th>Staff</th>
           <th>Vet</th>
+          <th>Venue</th>
           <th colspan=2>Action</th>
         </tr>
       </thead>
@@ -93,14 +99,18 @@
           <td><?php echo $row['pet_id']; ?></td>
           <td><?php echo $row['staff_id']; ?></td>
           <td><?php echo $row['vet_id']; ?></td>
-          <td><a href="editbookingservices.php?id=<?php echo $row['booking_id'];?>">Approve</a></td>
-          <td><a href="deletebookingservices.php?id=<?php echo $row['booking_id'];?>">Decline</a></td>
+          <td><?php echo $row['venue']; ?></td>
+          <td><a href="modifybookingservices.php?id=<?php echo $row['booking_id'];?>">Modify</a></td>
+          <td><a href="removebookingservices.php?id=<?php echo $row['booking_id'];?>">Remove</a></td>
         </tr>
       <?php
       }
         mysqli_close($connection);
         ?>
       </tbody>
+      </table>
+      <table class="center">
+        <tr><td colspan="2" style="background-color: #C69468; border: none;"><input type="button" value="Cancel" style="font-weight: bold; margin-top: 20px" onclick="window.open('managebookingservices.php','_self')"></tr>
       </table>
       <br>
 </body>

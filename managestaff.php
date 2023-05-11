@@ -36,6 +36,18 @@
         text-decoration: none;
         color: blue;
     }
+    #smallbox{
+        width: 80px;
+        height: 60px;
+        background-color: whitesmoke;
+        padding-top: 10px;
+        margin: 40px;
+        text-align: center;
+        float: right;
+    }
+    label:hover{
+        font-weight: bold;
+    }
 </style>
 <body>
     <?php
@@ -59,7 +71,7 @@
                     ?>
                     <tr>
                         <td>
-                            <a href="staffinfo.php?u=<?php echo $row["staff_username"]; ?>"><?php echo $row["staff_username"]; ?></a>
+                            <a href="viewstaff.php?u=<?php echo $row["staff_username"]; ?>"><?php echo $row["staff_username"]; ?></a>
                         </td>
                         <td>   
                             <a href="editstaff.php?u=<?php echo $row["staff_username"]; ?>">Edit</a>
@@ -72,6 +84,7 @@
             ?>
         </tr>
     </table>
+    <div id="smallbox"><label><a href="addstaff.php" style="text-decoration: none; font-size: 40px; color: black;">+</a></label></div>
     </center>
 </body>
 </html>

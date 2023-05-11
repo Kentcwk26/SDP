@@ -47,6 +47,9 @@
         text-align: center;
         float: right;
     }
+    label:hover{
+        font-weight: bold;
+    }
 </style>
 <body>
     <?php
@@ -70,7 +73,7 @@
         ?>
             <tr>
                 <td>
-                    <a href="customerinfo.php?id=<?php echo $row["customer_id"]; ?>"><?php echo $row["customer_name"]; ?></a>
+                    <a href="viewcustomer.php?id=<?php echo $row["customer_id"]; ?>"><?php echo $row["customer_name"]; ?></a>
                 </td>
                 <td>   
                     <a href="editcustomer.php?id=<?php echo $row["customer_id"]; ?>">Edit</a>

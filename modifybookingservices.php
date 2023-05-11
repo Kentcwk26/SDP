@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Booking Services</title>
+    <title>Modify Booking Services</title>
     <link rel="icon" type="image/x-icon" href="png/Icon.png">
 </head>
 <style>
@@ -66,48 +66,57 @@
         include "dbcon.php";
         include "header2.php";
         $id = $_GET['id'];
-        $query = "SELECT * FROM appointment where appointment_id = '$id'";
+        $query = "SELECT * FROM booking where booking_id = '$id'";
         $result = mysqli_query($connection,$query);
         while ($row = mysqli_fetch_assoc($result)){
+            $id = $row['booking_id'];
+            $service = $row['booking_service'];
             $customer = $row['customer_id'];
             $pet = $row['pet_id'];
-            $service = $row['appointment_service'];
-            $datetime = $row['appointment_datetime'];
+            $staff = $row['staff_id'];
+            $vet = $row['vet_id'];
+            $datetime = $row['booking_datetime'];
+            $venue = $row['venue'];
         }
     ?>
     <form action="#" method="post">
         <table class="center" style="padding-top: 20px">
             <tr>
+                <td><label for="BookingService" style="color: white">Booking ID:</label></td>
+                <td><input type="text" id="user-input" name="booking-id" value="<?php echo $id;?>" readonly></td>
+            </tr>
+            <tr>
                 <td><label for="BookingService" style="color: white">Booking Service:</label></td>
                 <td><input type="text" id="user-input" name="booking-service" value="<?php echo $service;?>" readonly></td>
             </tr>
             <tr>
-                <td><label for="CustomerName" style="color: white">Customer:</label></td>
+                <td><label for="Customer" style="color: white">Customer:</label></td>
                 <td><input type="text" id="user-input" name="customer" value="<?php echo $customer;?>" readonly></td>
-            </tr>
+            </tr>         
             <tr>
-                <td><label for="BookingService" style="color: white">Pet:</label></td>
+                <td><label for="Pet" style="color: white">Pet:</label></td>
                 <td><input type="text" id="user-input" name="pet" value="<?php echo $pet;?>" readonly></td>
             </tr>
+        </table>        
+        <table class="center" style="padding-top: 20px">
             <tr>
                 <td><label for="bookingDateTime" style="color: white">Booking Date & Time:</label></td>
                 <td><input type="text" id="user-input" name="booking-datetime" value="<?php echo $datetime?>" readonly></td>
             </tr>
             <tr>
                 <td><label for="Venue" style="color: white">Venue:</label></td>
-                <td><label for="pettype"></label>
-                <select name="pettype" id="pettype">
-                    <option value="None">- Please Select Room -</option>
-                    <option value="Room 1">Room 1 (Pet Medicial)</option>
-                    <option value="Room 2">Room 2 (Pet Medicial)</option>
-                    <option value="Room 3">Room 3 (Pet Medicial)</option>
-                    <option value="Room 4">Room 4 (Pet Medicial)</option>
-                    <option value="Room 5">Room 5 (Pet Grooming)</option>
-                    <option value="Room 6">Room 6 (Pet Grooming)</option>
-                    <option value="Room 7">Room 7 (Overnight Stay)</option>
-                    <option value="Room 8">Room 8 (Overnight Stay)</option>
-                    <option value="Room 9">Room 9 (Overnight Stay)</option>
-                    <option value="Room 10">Room 10 (Overnight Stay)</option>
+                <td><label for="Venue"></label>
+                <select name="Venue" id="Venue">
+                    <option value="Room 1" <?php if($venue == "Room 1") {echo "selected";}?>>Room 1</option>
+                    <option value="Room 2" <?php if($venue == "Room 2") {echo "selected";}?>>Room 2</option>
+                    <option value="Room 3" <?php if($venue == "Room 3") {echo "selected";}?>>Room 3</option>
+                    <option value="Room 4" <?php if($venue == "Room 4") {echo "selected";}?>>Room 4</option>
+                    <option value="Room 5" <?php if($venue == "Room 5") {echo "selected";}?>>Room 5</option>
+                    <option value="Room 6" <?php if($venue == "Room 6") {echo "selected";}?>>Room 6</option>
+                    <option value="Room 7" <?php if($venue == "Room 7") {echo "selected";}?>>Room 7</option>
+                    <option value="Room 8" <?php if($venue == "Room 8") {echo "selected";}?>>Room 8</option>
+                    <option value="Room 9" <?php if($venue == "Room 9") {echo "selected";}?>>Room 9</option>
+                    <option value="Room 10" <?php if($venue == "Room 10") {echo "selected";}?>>Room 10</option>
                 </select></td>
             </tr>
             <tr>
@@ -122,7 +131,7 @@
                         $staff_id= $row['staff_id'];
                         $staff_name= $row['staff_username'];
                     ?>
-                    <input type="radio" name="Staff" id="<?php echo $staff_id; ?>" value="<?php echo $staff_id; ?>">
+                    <input type="radio" name="Staff" id="<?php echo $staff_id; ?>" value="<?php echo $staff_id; ?>" <?php if($staff == "$staff_id"){ echo "checked";}?>>
                     <label style="font-weight: bold" for="<?php echo $staff_id; ?>"><?php echo $staff_id," (",$staff_name,")"; ?></label>
                     <?php
                     }
@@ -141,7 +150,7 @@
                         $vet_id= $row['vet_id'];
                         $vet_name= $row['vet_name'];
                     ?>
-                    <input type="radio" name="Vet" id="<?php echo $vet_id; ?>" value="<?php echo $vet_id; ?>">
+                    <input type="radio" name="Vet" id="<?php echo $vet_id; ?>" value="<?php echo $vet_id; ?>" <?php if($vet == "$vet_id"){ echo "checked";}?>>
                     <label style="font-weight: bold" for="<?php echo $vet_id; ?>"><?php echo $vet_id," (",$vet_name,")"; ?></label>
                     <?php
                     }
@@ -151,7 +160,7 @@
         </table>
         <table class="center" style="margin-top: 20px;">
             <tr>
-                <td colspan="2"><input type="button" value="Cancel" onclick="window.open('managebookingservices.php','_self')">
+                <td colspan="2"><input type="button" value="Cancel" onclick="window.open('bookingservices.php','_self')">
                 <td colspan="2"><input type="reset" name="reset" value="Reset"></td>
                 <td colspan="2"><input type="submit" name="Submit" value="Complete"></td>
             </tr>
@@ -159,16 +168,6 @@
     </form>
     <?php
         if(isset($_POST['Submit'])){
-            $prefix = "B";
-            $last_id = 0;
-            $sql = "SELECT booking_id FROM booking ORDER BY booking_id DESC LIMIT 1";
-            $result = mysqli_query($connection,$sql);
-            if (mysqli_num_rows($result) > 0) {
-                $row = mysqli_fetch_assoc($result);
-                $last_id = substr($row["booking_id"], 1);
-            }
-            $new_id = $prefix . ($last_id + 1);
-            $booking_id = $new_id;
             $booking_service = $_POST['booking-service'];
             $customer = $_POST['customer'];
             $booking_datetime = $_POST['booking-datetime'];
@@ -176,15 +175,12 @@
             $staff = $_POST['Staff'];
             $vet = $_POST['Vet'];
             $pet = $_POST['pet'];
-            $query = "INSERT INTO booking (booking_id, booking_service, customer_id, staff_id, vet_id, pet_id, booking_datetime, venue) VALUES ('$booking_id', '$booking_service', '$customer', '$staff', '$vet', '$pet', '$booking_datetime','$venue')";
+            $query = "UPDATE `booking` SET `booking_service`='$booking_service',`customer_id`='$customer',`pet_id`='$pet',`staff_id`='$staff',`vet_id`='$vet',`booking_datetime`='$booking_datetime',`venue`='$venue' WHERE `booking_id`='$id';";
             $result = mysqli_query($connection,$query);
             if($result){
-                $query = "DELETE FROM appointment WHERE appointment_id = '$id'";
                 $result = mysqli_query($connection,$query);
-                if($result){
-                    echo "<script>alert('booking Completed!')</script>";
-                    echo "<script>window.open('managebookingservices.php','_self')</script>";
-                }
+                echo "<script>alert('Edit Booking!')</script>";
+                echo "<script>window.open('bookingservices.php','_self')</script>";
             }
         }
     ?>

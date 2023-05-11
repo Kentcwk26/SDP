@@ -37,13 +37,10 @@
         margin-left: 50px;
         margin-right: 50px;
     }
-    #user-input{
-        height: 30px;
+    #user-input, #user-textarea{
+        height: 40px;
         width: 700px;
-    }
-    #user-textarea{
-        height:70px;
-        width: 700px;
+        padding-left: 5px;
     }
     td{
       padding: 10px;
@@ -133,7 +130,7 @@
         </table>
         <table class="center" style="padding-top: 10px" >
             <tr>
-                <td style="border: none;"><input type="button" value="Cancel" onclick="window.open('WHmanageproducts.php','_self')">
+                <td style="border: none;"><input type="button" value="Cancel" onclick="window.open('manageproduct.php','_self')">
                 <td style="border: none;"><input type="reset" name="reset" value="Reset"></td>
                 <td style="border: none;"><input type="submit" name="submit" value="Complete"></td>
             </tr>
@@ -167,7 +164,7 @@
                         if($result2){
                             ?>
                             <script>
-                                window.location.href = "WHmanageproducts.php";
+                                window.location.href = "manageproduct.php";
                                 alert("Edit product success!");
                             </script>
                             <?php

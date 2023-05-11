@@ -80,7 +80,6 @@
             $username = $row['customer_username'];
             $email = $row['customer_email'];
             $contact = $row['customer_contactnumber'];
-            $address = $row['customer_homeaddress'];
         ?>
     <div id="box" style="margin-top: 15px;">
         <div class="circle"><center>
@@ -107,10 +106,6 @@
                 <td>Contact Number:</td>
                 <td><?php echo $contact; ?></td>
             </tr>
-            <tr>
-                <td>Address:</td>
-                <td><?php echo $address; ?></td>
-            </tr>
         </table>
         <table>
             <tr>
@@ -119,7 +114,8 @@
                     <a href="deletecustomer.php?id=<?php echo $row["customer_id"]; ?>"><button class="button2">Delete</button></a>
                     <input type="button" value="Cancel" onclick="window.open('managecustomer.php','_self')">
                 </td>
-        </tr>
+            </tr>
+        </table>
     <?php
         }   
         mysqli_close($connection);

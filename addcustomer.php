@@ -25,10 +25,14 @@
         font-weight:bold;
     }
     input[type=text],input[type=email],input[type=password]{
-        width: 800px;
+        width: 1250px;
         height: 30px;
-        margin: 5px;
-        padding: 4px 10px;
+        margin: 8px;
+        padding: 8px 10px;
+    }
+    input[type=radio]{
+        padding: 14px 20px;
+        margin-left: 10px;
     }
     input[type=submit],input[type=reset],input[type=button]{
         width: 100px;
@@ -50,7 +54,7 @@
         background-color: red;
         font-weight:bold;
     }
-    input[type=text]:focus, input[type=email]:focus, input[type=password]:focus {
+    input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, textarea:focus{
         border: 2px solid #555;
     }
     .img{
@@ -73,7 +77,7 @@
     }
     #smallbox{
         width: 98%;
-        height: 600px;
+        height: 450px;
         background-color: #f1f1f1;
         border: 1px solid black;
         border-radius: 5px;
@@ -86,14 +90,11 @@
         padding: 10px;
     }
     .circleavatar{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 200px;
-        height: 200px;
+        width: 160px;
+        height: 160px;
         border-radius: 50%;
         background-color: #D9BB97;
-        margin: 25px 42px;
+        margin: 10px;
         flex-direction: column;
     }
 </style>
@@ -120,7 +121,7 @@
                 }
                 $new_id = $prefix . ($last_id + 1);
                 ?>
-                <input type="text" name="customerid" value="<?php echo $new_id; ?>" readonly>
+                <input type="text" required name="customerid" value="<?php echo $new_id; ?>" readonly>
                 </td>
             </tr>
             <tr>
@@ -129,75 +130,146 @@
             </tr>
             <tr>
                 <td>Customer Email: </td>
-                <td><input type="email" required email="customeremail"></td>
+                <td><input type="email" required name="customeremail"></td>
             </tr>
             <tr>
-                <td>Customer Contact Number: </td>
+                <td>Customer Contact: </td>
                 <td><input type="text" required name="customerphone" maxlength="11" pattern="[0]{1}[0-9]{9}" placeholder="Kindly please insert the Malaysia's contact number format: 0123456789[10] or 01123456789[11]"></td>
-            </tr>
-            <tr>
-                <td>Customer Address: </td>
-                <td><input type="text" required name="customeraddress" style="height: 200px"></td>
             </tr>
         </table>
         <table>
-            <tr>
+        <tr>
                 <h2>Please select your favourite avatar: </h2>
                 <center><div id="smallbox">
                     <div class="avatar">
                         <a target="_blank" href="Avatar\A1.jpg">
                         <img src="Avatar\A1.jpg" alt="Avatar 1" class="circleavatar"></a>
-                        <label for="a1"><div class="desc"><input type="radio" required name="Avatar" id="a1" value="A1">Avatar 1</div></label>
+                        <div class="desc"><input type="radio" required name="Avatar" id="a1" value="A1"><label for="a1">Avatar 1</label></div>
                     </div>
                     <div class="avatar">
                         <a target="_blank" href="Avatar\A2.jpg">
                         <img src="Avatar\A2.jpg" alt="Avatar 2" class="circleavatar"></a>
-                        <label for="a2"><div class="desc"><input type="radio" required name="Avatar" id="a2" value="A2">Avatar 2</div></label>
+                        <div class="desc"><input type="radio" required name="Avatar" id="a2" value="A2"><label for="a2">Avatar 2</label></div>
                     </div>
                     <div class="avatar">
                         <a target="_blank" href="Avatar\A3.jpg">
                         <img src="Avatar\A3.jpg" alt="Avatar 3" class="circleavatar"></a>
-                        <label for="a3"><div class="desc"><input type="radio" required name="Avatar" id="a3" value="A3">Avatar 3</div></label>
+                        <div class="desc"><input type="radio" required name="Avatar" id="a3" value="A3"><label for="a3">Avatar 3</label></div>
                     </div>
                     <div class="avatar">
                         <a target="_blank" href="Avatar\A4.jpg">
                         <img src="Avatar\A4.jpg" alt="Avatar 4" class="circleavatar"></a>
-                        <label for="a4"><div class="desc"><input type="radio" required name="Avatar" id="a4" value="A4">Avatar 4</div></label>
+                        <div class="desc"><input type="radio" required name="Avatar" id="a4" value="A4"><label for="a4">Avatar 4</label></div>
                     </div>
                     <div class="avatar">
                         <a target="_blank" href="Avatar\A5.jpg">
                         <img src="Avatar\A5.jpg" alt="Avatar 5" class="circleavatar"></a>
-                        <label for="a5"><div class="desc"><input type="radio" required name="Avatar" id="a5" value="A5">Avatar 5</div></label>
+                        <div class="desc"><input type="radio" required name="Avatar" id="a5" value="A5"><label for="a5">Avatar 5</label></div>
                     </div>
                     <div class="avatar">
                         <a target="_blank" href="Avatar\A6.jpg">
                         <img src="Avatar\A6.jpg" alt="Avatar 6" class="circleavatar"></a>
-                        <label for="a6"><div class="desc"><input type="radio" required name="Avatar" id="a6" value="A6">Avatar 6</div></label>
+                        <div class="desc"><input type="radio" required name="Avatar" id="a6" value="A6"><label for="a6">Avatar 6</label></div>
                     </div>
                     <div class="avatar">
                         <a target="_blank" href="Avatar\A7.jpg">
                         <img src="Avatar\A7.jpg" alt="Avatar 7" class="circleavatar"></a>
-                        <label for="a7"><div class="desc"><input type="radio" required name="Avatar" id="a7" value="A7">Avatar 7</div></label>
+                        <div class="desc"><input type="radio" required name="Avatar" id="a7" value="A7"><label for="a7">Avatar 7</label></div>
                     </div>
                     <div class="avatar">
                         <a target="_blank" href="Avatar\A8.jpg">
                         <img src="Avatar\A8.jpg" alt="Avatar 8" class="circleavatar"></a>
-                        <label for="a8"><div class="desc"><input type="radio" required name="Avatar" id="a8" value="A8">Avatar 8</div></label>
+                        <div class="desc"><input type="radio" required name="Avatar" id="a8" value="A8"><label for="a8">Avatar 8</label></div>
                     </div>
                     <div class="avatar">
                         <a target="_blank" href="Avatar\A9.jpg">
                         <img src="Avatar\A9.jpg" alt="Avatar 9" class="circleavatar"></a>
-                        <label for="a9"><div class="desc"><input type="radio" required name="Avatar" id="a9" value="A9">Avatar 9</div></label>
+                        <div class="desc"><input type="radio" required name="Avatar" id="a9" value="A9"><label for="a9">Avatar 9</label></div>
                     </div>
                     <div class="avatar">
                         <a target="_blank" href="Avatar\A10.jpg">
                         <img src="Avatar\A10.jpg" alt="Avatar 10" class="circleavatar"></a>
-                        <label for="a10"><div class="desc"><input type="radio" required name="Avatar" id="a10" value="A10">Avatar 10</div></label>
+                        <div class="desc"><input type="radio" required name="Avatar" id="a10" value="A10"><label for="a10">Avatar 10</label></div>
+                    </div>
+                    <div class="avatar">
+                        <a target="_blank" href="Avatar\A11.jpg">
+                        <img src="Avatar\A11.jpg" alt="Avatar 11" class="circleavatar"></a>
+                        <div class="desc"><input type="radio" required name="Avatar" id="a11" value="A11"><label for="a11">Avatar 11</label></div>
+                    </div>
+                    <div class="avatar">
+                        <a target="_blank" href="Avatar\A12.jpg">
+                        <img src="Avatar\A12.jpg" alt="Avatar 12" class="circleavatar"></a>
+                        <div class="desc"><input type="radio" required name="Avatar" id="a12" value="A12"><label for="a12">Avatar 12</label></div>
+                    </div>
+                    <div class="avatar">
+                        <a target="_blank" href="Avatar\A13.jpg">
+                        <img src="Avatar\A13.jpg" alt="Avatar 13" class="circleavatar"></a>
+                        <div class="desc"><input type="radio" required name="Avatar" id="a13" value="A13"><label for="a13">Avatar 13</label></div>
+                    </div>
+                    <div class="avatar">
+                        <a target="_blank" href="Avatar\A14.jpg">
+                        <img src="Avatar\A14.jpg" alt="Avatar 14" class="circleavatar"></a>
+                        <div class="desc"><input type="radio" required name="Avatar" id="a14" value="A14"><label for="a14">Avatar 14</label></div>
+                    </div>
+                    <div class="avatar">
+                        <a target="_blank" href="Avatar\A15.jpg">
+                        <img src="Avatar\A15.jpg" alt="Avatar 15" class="circleavatar"></a>
+                        <div class="desc"><input type="radio" required name="Avatar" id="a15" value="A15"><label for="a15">Avatar 15</label></div>
+                    </div>
+                    <div class="avatar">
+                        <a target="_blank" href="Avatar\A16.jpg">
+                        <img src="Avatar\A16.jpg" alt="Avatar 16" class="circleavatar"></a>
+                        <div class="desc"><input type="radio" required name="Avatar" id="a16" value="A16"><label for="a16">Avatar 16</label></div>
                     </div>
                 </div><p>Click the picture to see a clearer profile picture</p></center>
             </tr>
+            <tr>
+                <td>Pet ID: </td>
+                <td><?php
+                $prefix = "T";
+                $last_id = 0;
+                $sql = "SELECT pet_id FROM pet ORDER BY pet_id DESC LIMIT 1";
+                $result = mysqli_query($connection,$sql);
+                if (mysqli_num_rows($result) > 0) {
+                    $row = mysqli_fetch_assoc($result);
+                    $last_id = substr($row["pet_id"], 1);
+                }
+                $new_id = $prefix . ($last_id + 1);
+                ?>
+                <input type="text" required name="petid" value="<?php echo $new_id; ?>" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>Pet Name: </td>
+                <td><input type="text" required name="petname"></td>
+            </tr>
+            <tr>
+                <td>Pet Type: </td>
+                <td><label for="pettype"></label>
+                <select name="pettype" id="pettype">
+                    <option value="Dog">Dog</option>
+                    <option value="Cat">Cat</option>
+                    <option value="Rabbit">Rabbit</option>
+                    <option value="Hamster">Hamster</option>
+                    <option value="Bird">Bird</option>
+                    <option value="Turtle">Turtle</option>
+                </select></td>
+            </tr>
+            <tr>
+                <td>Pet Gender: </td>
+                <td><label for="male"><input type="radio" required name="petgender" id="male" value="Male">Male</div></label>
+                <label for="female"><input type="radio" required name="petgender" id="female" value="Female">Female</div></label></td>
+            </tr>
+            <tr>
+                <td>Pet Age: </td>
+                <td><input type="number" min="0" max="5" size="0.5" required name="petage"></td>
+            </tr>
+            <tr>
+                <td>Pet Allergy: </td>
+                <td><input type="text" required name="petallergy"></td>
+            </tr>
         </table> 
-        <table>
+        <table style="margin-top: 10px">
             <tr>
                 <td colspan="2"><input type="submit" name="submit" value="Add"></td></div>
                 <td colspan="2"><input type="reset" name="reset" value="Reset"></td>
@@ -213,53 +285,47 @@
             return $data;
         }
         if(isset($_POST['submit'])){
-            if (empty($_POST["customername"]) or empty($_POST["customeremail"]) or empty($_POST["customerphone"] or empty($_POST["customeraddress"] or empty($_POST("Avatar"))))) {
-                echo "<script>alert('All the customer details are required')</script>";
-            } else {
-                $name = test_input($_POST["customername"]);
-                $email = test_input($_POST["customeremail"]);
-                $phone = test_input($_POST["customerphone"]);
-                if (!preg_match("/^[a-zA-Z-' ]*$/",$name)){
-                    echo "<script>alert('Wrong input in the name section!')</script>";
-                } else {
-                    if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
-                        echo "<script>alert('Invalid email')</script>";
+            $name = test_input($_POST["customername"]);
+            $email = test_input($_POST["customeremail"]);
+            $phone = test_input($_POST["customerphone"]);
+            $petname = test_input($_POST["petname"]);
+            $pettype = test_input($_POST["pettype"]);
+            $petgender = test_input($_POST["petgender"]);
+            if (!preg_match("/^[a-zA-Z-' ]*$/",$name) or !preg_match("/^[a-zA-Z-' ]*$/",$petname)){
+                echo "<script>alert('Wrong input in the name section!')</script>";
+            } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
+                echo "<script>alert('Invalid email')</script>";
+            } else if (!ctype_digit($phone) || strlen($phone) > 11){
+                echo "<script>alert('Incorrect Contact Number / Format')</script>";
+            } else{ 
+                $customerid = $_POST['customerid'];
+                $customeravatar = $_POST['Avatar'];
+                $customername = $_POST['customername'];
+                $customeremail = $_POST['customeremail'];
+                $customerphone = $_POST['customerphone'];
+                $petid = $_POST['petid'];
+                $petname = $_POST['petname'];
+                $petgender = $_POST['petgender'];
+                $petage = $_POST['petage'];
+                $pettype = $_POST['pettype'];
+                $petallergy = $_POST['petallergy'];
+                $sql = "INSERT INTO customer(`customer_profile`,`customer_id`, `customer_name`, `customer_username`, `customer_password`,`customer_email`, `customer_contactnumber`) VALUES ('$customeravatar','$customerid', '$customername', 'guest', 'customer123', '$customeremail', '$customerphone')";
+                $sql2 = "INSERT INTO `pet`(`pet_id`, `pet_name`, `pet_age`, `pet_type`, `pet_gender`, `pet_allergy`,`customer_name`, `customer_contact`) VALUES ('$petid','$petname','$petage','$pettype','$petgender', '$petallergy','$customername','$customerphone')";
+                $result = mysqli_query($connection,$sql);
+                if($result){
+                    $result2 = mysqli_query($connection,$sql2);
+                    if($result2){
+                        echo "<script>alert('Added Successfully!')</script>";
+                        echo "<script>window.open('managecustomer.php','_self')</script>";
                     } else {
-                        if (!ctype_digit($phone) && !strlen($phone)<=11){
-                            echo "<script>alert('Incorrect Contact Number / Format')</script>";
-                        } else{
-                            $customerid = $_POST['customerid'];
-                            $customeravatar = $_POST['avatar'];
-                            $customername = $_POST['customername'];
-                            $customerusername = $_POST['username'];
-                            $customerpassword = $_POST['password'];
-                            $customeremail = $_POST['customeremail'];
-                            $customerphone = $_POST['customerphone'];
-                            $customeraddress = $_POST['customeraddress'];
-                            $sql = "INSERT INTO customer(`customer_profile`,`customer_id`, `customer_name`, `customer_username`, `customer_password`,`customer_email`, `customer_contactnumber`, `customer_homeaddress`) VALUES ('$customeravatar','$customerid', '$customername', 'guest', 'customer123', '$customeremail', '$customerphone', '$customeraddress')";
-                            $result = mysqli_query($connection,$sql);
-                            if($result){
-                                ?>
-                                <script>
-                                    window.location.href = "managecustomer.php";
-                                    alert("Customer Updated Successfully");
-                                </script>
-                                <?php
-                            }
-                            else{
-                                ?>
-                                <script>
-                                    window.location.href = "managecustomer.php";
-                                    alert("Customer Update Failed");
-                                </script>
-                            <?php
+                        echo "<script>alert('Error, please try again!')</script>";
                     }
-                } 
-                } 
-            }
-        }
-        }
-        ?>
+                } else {
+                    echo "<script>alert('Failed to add, please try again!')</script>";
+                }
+            } 
+        } 
+    ?>
     <?php
         mysqli_close($connection);
     ?>

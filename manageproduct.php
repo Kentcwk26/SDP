@@ -8,26 +8,26 @@
     <link rel="icon" type="image/x-icon" href="png/Icon.png" >
 </head>
 <style>
-    body{
-        background-color: #C69468;
-    }
-    #block{height:70px;width: 650px;
-        text-align:right;
+  body{
+      background-color: #C69468;
+  }
+  #block{
+    height:70px;width: 650px;
+    text-align:right;
     display:block;
     position:flex;
     float: left; 
     background-color: #DABA9E;
-
-    }
-
-    #loginblock{height:70px;width: 600px;
-        text-align:right;
-        display:block;
+  }
+  #loginblock{
+    height:70px;
+    width: 600px;
+    text-align:right;
+    display:block;
     position:flex;
     float: left;
     background-color: #DABA9E;
-
-    }
+  }
   table {
     border-collapse: collapse;
     width: 100%;
@@ -55,18 +55,19 @@
   a:visited{
       color: blue;
   }
-
+  .center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 20px;
+  }
 </style>
 <body>
     <?php
-        sleep(1);
         include "dbcon.php";
         include "header2.php";
     ?>
     <b><h1 style="text-align:center;"><u>Manage Products</u></h1></b>
-    <br>
-    <input type="button" value="Add" id="my-button" onclick="window.open('addmedicine.php','_self')">
-    <br>
     <table style="text-align: center;">
         <thead>
           <tr>
@@ -92,11 +93,15 @@
             </td>
           </tr>
         <?php
-          } mysqli_close($connection);
+          } 
+          mysqli_close($connection);
         ?>
         </tbody>
       </table>
       <br>
-      <input type="button" value="Back" id="my-button" style="margin-left: 700px;" onclick="window.open('staffmain.php','_self')">
+      <div class="center">
+        <input type="button" value="Add" id="my-button" onclick="window.open('addmedicine.php','_self')">
+        <input type="button" value="Back" id="my-button" onclick="window.open('staffmain.php','_self')">
+      </div>
 </body>
 </html>

@@ -66,12 +66,6 @@
         $sql = "SELECT * FROM appointment";
         $result = mysqli_query($connection,$sql);
       ?>
-      <div class="center">
-        <input type="button" value="Back" id="my-button" onclick="window.open('staffmain.php','_self')">
-        <input type="button" value="Add" id="my-button" onclick="window.open('addbookingservices.php','_self')">
-        <input type="button" value="Manage" id="my-button" onclick="window.open('bookingservices.php','_self')">
-        <input type="button" value="Print" id="my-button" onclick="window.print()">
-      </div>
       <thead>
         <tr>
           <th>Booking ID</th>
@@ -86,19 +80,24 @@
       ?>
         <tr>
           <td><a href="viewbookingservices.php?id=<?php echo $row['appointment_id'];?>"><?php echo $row["appointment_id"];?></a></td>
-          <td><?php echo $row['booking_service']; ?></td>
+          <td><?php echo $row['appointment_service']; ?></td>
           <td><?php echo $row['appointment_datetime']; ?></td>
-          <td><a href="editbookingservices.php?id=<?php echo $row['appointment_id'];?>">Modify</a></td>
+          <td><a href="editbookingservices.php?id=<?php echo $row['appointment_id'];?>">Edit</a></td>
           <td><a href="deletebookingservices.php?id=<?php echo $row['appointment_id'];?>">Delete</a></td>
           <td><a href="approvebookingservices.php?id=<?php echo $row['appointment_id'];?>">Approve</a></td>
           <td><a href="declinebookingservices.php?id=<?php echo $row['appointment_id'];?>">Decline</a></td>
         </tr>
       <?php
       }
-        mysqli_close($connection);
-        ?>
-      </tbody>
-      </table>
-      <br>
+      mysqli_close($connection);
+      ?>
+    </tbody>
+    </table><br>
+    <div class="center">
+        <input type="button" value="Back" id="my-button" onclick="window.open('staffmain.php','_self')">
+        <input type="button" value="Add" id="my-button" onclick="window.open('addbookingservices.php','_self')">
+        <input type="button" value="Manage" id="my-button" onclick="window.open('bookingservices.php','_self')">
+        <input type="button" value="Print" id="my-button" onclick="window.print()">
+    </div>
 </body>
 </html>

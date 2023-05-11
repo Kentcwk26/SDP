@@ -65,7 +65,7 @@
     <center><div id="adminIndex"><a href="admin.php"><img src="png\Logo4.png"></a></div><h1 style="padding-top: 20px"><b>Delete Customer</b></h1></center>
     <?php
         $id = $_GET['id'];
-        $query = "SELECT * FROM customer where customer_id = '$id'";
+        $query = "SELECT * FROM customer WHERE customer_id='$id'";
         $result = mysqli_query($connection,$query);
         while ($row = mysqli_fetch_assoc($result)){
             $profile = $row['customer_profile'];
@@ -74,7 +74,9 @@
             $username = $row['customer_username'];
             $email = $row['customer_email'];
             $contact = $row['customer_contactnumber'];
-            $address = $row['customer_homeaddress'];
+        }
+        $query2 = "SELECT customer.customer_id, customer.customer_name, customer.customer_profile, customer_contactnumber, customer.customer_email, customer.customer_username, customer.customer_password, pet.pet_id, pet.pet_name, pet.pet_age, pet.pet_type, pet.pet_gender, pet.pet_allergy, pet.customer_contact, pet.customer_name FROM customer INNER JOIN pet ON customer.customer_name = pet.customer_name WHERE customer.customer_name='$name'";
+        $result = mysqli_query($connection,$query);
         ?>
     <div id="box" style="margin-top: 15px;">
     <div class="circle"><center>
@@ -101,10 +103,6 @@
                 <td>Contact Number:</td>
                 <td><?php echo $contact; ?></td>
             </tr>
-            <tr>
-                <td>Address:</td>
-                <td><?php echo $address; ?></td>
-            </tr>
         </table></b>
     </div>
         <form action="#" method="POST">
@@ -114,21 +112,18 @@
         </form>
         <?php
             if(isset($_POST['delete'])){
-                $query1 = "DELETE FROM customer WHERE customer_id = '$id'";
-                $results = mysqli_query($connection,$query1);
-                if($results){
+                $query1 = "DELETE customer.customer_id, customer.customer_name, customer.customer_profile, customer_contactnumber, customer.customer_email, customer.customer_username, customer.customer_password, pet.pet_id, pet.pet_name, pet.pet_age, pet.pet_type, pet.pet_gender, pet.pet_allergy, pet.customer_contact, pet.customer_name FROM customer INNER JOIN pet ON customer.customer_name = pet.customer_name WHERE customer.customer_name='$name'";
+                $result = mysqli_query($connection,$query1);
+                if($result){
                     echo "<script>alert('Customer record deleted successfully!')</script>";
                     echo "<script>window.open('managecustomer.php','_self')</script>";
-                }
-                else{
-                    echo "<script>alert('Customer record failed to delete, please try again!')</script>";
-                    echo "<script>window.open('managecustomer.php','_self')</script>";
+                } else {
+                    echo "<script>alert('failed to delete!')</script>";
                 }
             }
         ?>
         <?php 
             mysqli_close($connection);
-        }
         ?>
 </body>
 </html>
