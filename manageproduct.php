@@ -100,7 +100,7 @@
       </table>
       <br>
       <div class="center">
-        <input type="button" value="Add" id="my-button" onclick="window.open('addmedicine.php','_self')">
+        <input type="button" value="Add" id="my-button" onclick="window.open('addproduct.php','_self')">
         <input type="button" value="Back" id="my-button" onclick="window.open('staffmain.php','_self')">
       </div>
 </body>

@@ -12,11 +12,12 @@
         background-color: #D9BB97;
         width: 100%;
         height: 100%;
+        padding-bottom: 5px;
     }
 </style>
 <body>
     <div id="header">
-        <a href="mainindex.php" style="padding-left: 15px;"><img src="png\Logo4.png"></a>
+        <a href="mainindex.php" style="padding-left: 15px;"><img src="Logo4.png"></a>
         <h1 style="text-align: center; float:right; padding-right: 700px; padding-top: 40px;">Pet Paradise</h1>
     </div>
     <div style="clear:both;"></div>

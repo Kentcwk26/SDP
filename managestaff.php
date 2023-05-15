@@ -12,7 +12,6 @@
         width: 200px;
         height: 150px;
         padding-bottom: 30px;
-        padding-top: 10px;
     }
     table{
         font-family: arial, sans-serif;
@@ -71,15 +70,15 @@
                     ?>
                     <tr>
                         <td>
-                            <a href="viewstaff.php?u=<?php echo $row["staff_username"]; ?>"><?php echo $row["staff_username"]; ?></a>
+                            <a href="viewstaff.php?id=<?php echo $row["staff_id"]; ?>"><?php echo $row["staff_username"]; ?></a>
                         </td>
                         <td>   
-                            <a href="editstaff.php?u=<?php echo $row["staff_username"]; ?>">Edit</a>
-                            <a href="deletestaff.php?u=<?php echo $row["staff_username"]; ?>">Delete</a>
+                            <a href="editstaff.php?id=<?php echo $row["staff_id"]; ?>">Edit</a>
+                            <a href="deletestaff.php?id=<?php echo $row["staff_id"]; ?>">Delete</a>
                         </td>
                     </tr>
                 <?php
-                }   
+                }
                 mysqli_close($connection);
             ?>
         </tr>

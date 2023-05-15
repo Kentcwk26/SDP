@@ -47,6 +47,32 @@
         margin-left: auto;
         margin-right: auto;
     }
+    input[type=submit],input[type=reset],input[type=button]{
+        width: 100px;
+        height: 30px;
+        margin: 5px;
+        border-radius: 10%;
+        font-size: 14px;
+    }
+    input[type=submit]:active, input[type=reset]:active, input[type=button]:active {
+        box-shadow: 0 5px #C69468;
+        transform: translateY(2px);
+    }
+    input[type=submit]:hover{
+        background-color: green;
+        border-color: green;
+        color: white;
+        font-weight:bold;
+    }
+    input[type=reset]:hover{
+        background-color: black;
+        color: white;
+        font-weight:bold;
+    }
+    input[type=button]:hover{
+        background-color: red;
+        font-weight: bold;
+    }
 </style>
 <body>
     <?php
@@ -59,20 +85,17 @@
         $result = mysqli_query($connection,$query);
         while ($row = mysqli_fetch_assoc($result)){
             $AppointmentID = $row['appointment_id'];
-            $BookingService = $row['booking_service'];
-            $BookingDate = $row['appointment_date'];
-            $BookingTime = $row['appointment_time'];
+            $BookingService = $row['appointment_service'];
+            $BookingDate = $row['appointment_datetime'];
             $CustomerName = $row['cus_name'];
         }
     ?>
     <form action="#" method="post">
-        <table class="center">
+        <table class="center" style="margin-top: 10px">
             <tr>
                 <td><label for="user-input" style="color: white">Appointment ID:</label></td>
-                <td><input type="text" name="appointment-id" value="<?php echo $AppointmentID; ?>" readonly></td>
+                <td><input type="text" name="appointment-id" id="user-input" value="<?php echo $AppointmentID; ?>" readonly></td>
             </tr>
-        </table>
-        <table class="center" style="margin-top: 10px">
             <tr>
                 <td><label for="BookingService" style="color: white">Booking Service:</label></td>
                 <td>
@@ -86,12 +109,8 @@
                 </td>
             </tr>
             <tr>
-                <td><label for="user-input" style="color: white">Booking Date:</label></td>
-                <td><input type="date" name="booking-date" style="width:652px; height: 40px; padding-left: 5px; font-family: Times New Roman"></td>
-            </tr>
-            <tr>
-                <td><label for="user-input" style="color: white">Booking Time:</label></td>
-                <td><input type="time" name="booking-time" style="width:652px; height: 40px; padding-left: 5px; font-family: Times New Roman"></td>
+                <td><label for="user-input" style="color: white">Booking DateTime:</label></td>
+                <td><input type="datetime-local" name="booking-datetime" style="width:652px; height: 40px; padding-left: 5px; font-family: Times New Roman"></td>
             </tr>
             <tr>
                 <td><label for="user-input" style="color: white">Customer Name:</label></td>
@@ -100,7 +119,7 @@
         </table>
         <table class="center" style="margin-top: 20px;">
             <tr>
-                <td colspan="2"><input type="button" value="Cancel" onclick="window.open('managebookingservice.php','_self')">
+                <td colspan="2"><input type="button" value="Cancel" onclick="window.open('managebookingservices.php','_self')">
                 <td colspan="2"><input type="reset" name="reset" value="Reset"></td>
                 <td colspan="2"><input type="submit" name="Submit2" value="Complete"></td>
             </tr>
@@ -118,10 +137,9 @@
                     echo "<script>alert('All the details are required in order to make the bookings')</script>";
                 } else {
                     $BookingService = $_POST['BookingService'];
-                    $BookingDate = test_input($_POST['booking-date']);
-                    $BookingTime = test_input($_POST['booking-time']);
+                    $Booking = test_input($_POST['booking-datetime']);
                     $CustomerName = test_input($_POST['customer-name']);
-                    $sql = "UPDATE appointment SET cus_name = '$CustomerName', booking_service = '$BookingService', appointment_date = '$BookingDate', appointment_time = '$BookingTime' WHERE appointment_id = '$AppointmentID')";
+                    $sql = "UPDATE appointment SET cus_name = '$CustomerName', appointment_service = '$BookingService', appointment_datetime = '$BookingDate' WHERE appointment_id = '$AppointmentID')";
                     if(mysqli_query($connection, $sql)){
                         echo "<script>alert('Booking Service updated successfully!')</script>";
                         echo "<script>window.open('managebookingservices.php','_self')</script>";

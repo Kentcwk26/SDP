@@ -129,7 +129,7 @@
             if ($booking_service == $BookingService and $appointment_datetime == $request_datetime){
                 echo "<script>alert('The booking service is already booked, kindly choose another day.')</script>";
             } else {
-                $prefix = "A";
+                $prefix = "Q";
                 $last_id = 0;
                 $sql2 = "SELECT appointment_id FROM appointment ORDER BY appointment_id DESC LIMIT 1";
                 $result = mysqli_query($connection,$sql2);

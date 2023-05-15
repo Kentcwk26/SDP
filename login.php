@@ -24,7 +24,7 @@ if (isset($_POST['login'])) {
             $row = mysqli_fetch_assoc($results);
             $_SESSION['Staff_ID'] = $row['staff_id'];
             echo "<script>alert('Congratulations! You are logged in as staff.');</script>";
-            echo "<script>location.href = 'staff.php'</script>";
+            echo "<script>location.href = 'mainindex.php'</script>";
 
         } else {
             $query = "SELECT * FROM admin WHERE admin_username='$username' AND admin_password='$password'";
@@ -48,7 +48,7 @@ if (isset($_POST['register'])) {
     $username = $_POST['txtUsername'];
     $name = $_POST['txtName'];
     $email = $_POST['txtEmail'];
-    $password = $_POST['txtPassword'];
+    $password = $_POST['txtConfirmPassword'];
     $petname = $_POST['txtpetname'];
     $petgender = $_POST['txtpetgender'];
     $pettype = $_POST['txtpettype'];
@@ -107,8 +107,7 @@ mysqli_close($connection);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | Register</title>
-    <link rel="icon" type="image/x-icon" href="png\Icon.png">
+    <title>Document</title>
     <link rel="stylesheet" href="css\style3.css">
 
 </head>
@@ -134,24 +133,24 @@ mysqli_close($connection);
             <h2>Login</h2>
             <div id="formSwitchBtn">
                 <button class="active">Login</button>
-                <button>Registration</button>
+                <button class="register-button">Registration</button>
             </div>
             <form action="#" method="POST">
                 <div class="input-box">
                     <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
-                    <input type="text" name="txtUsername" required>
+                    <input id="LoginEmail" type="text" name="txtUsername" required>
                     <label>Username</label>
                 </div> 
                 <div class="input-box">
-                    <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
-                    <input type="password" name="txtPassword" required>
+                    <span class="icon"><ion-icon id="password-icon" name="eye-off-outline" onclick="togglePasswordVisibility()"></ion-icon></span>
+                    <input id="input-password" type="password" name="txtPassword" required>
                     <label>Password</label>
                 </div>
                 <div class="remember-forgot">
                     <label><input type="checkbox">Remember me</label>
                     <a href="#" class="forgotpassword-link">Forgot Password?</a>
                 </div>
-                <input type="submit" class="btn" value="Login" name="login">
+                <input onclick="return ValidateLoginForm();" type="submit" class="btn" value="Login" name="login">
                 <div class="login-register">
                     <p>Don't have an account? <a href="#" class="register-link">Register</a></p>
                 </div>
@@ -161,7 +160,7 @@ mysqli_close($connection);
         <div class="form-box register">
             <h2>Registration</h2>
             <div id="formSwitchBtn">
-                <button>Login</button>
+                <button class="login-button">Login</button>
                 <button class="active">Registration</button>
             </div>
             <form action="#" method="POST">
@@ -177,17 +176,17 @@ mysqli_close($connection);
                 </div> 
                 <div class="input-box">
                     <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
-                    <input type="email" name="txtEmail" required>
+                    <input id="register-input-email" type="email" name="txtEmail" required>
                     <label>Email</label>
                 </div> 
                 <div class="input-box">
-                    <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
-                    <input type="password" required>
+                    <span class="icon"><ion-icon id="register-password-icon" name="eye-off-outline" onclick="toggleRegisterPasswordVisibility()"></ion-icon></span>
+                    <input id="register-input-password" type="password" name="txtPassword" required>
                     <label>Password</label>
                 </div>
                 <div class="input-box">
-                    <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
-                    <input type="password" name="txtPassword" required>
+                    <span class="icon"><ion-icon id="register-confirm-password-icon" name="eye-off-outline" onclick="toggleRegisterConfirmPasswordVisibility()"></ion-icon></span>
+                    <input id="register-input-confirm-password" type="password" name="txtConfirmPassword" required>
                     <label>Confirm Password</label>
                 </div>
                 <div class="remember-forgot">
@@ -277,13 +276,13 @@ mysqli_close($connection);
             <h2>Reset Password</h2>
             
                 <div class="input-box">
-                    <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
-                    <input type="password" required>
+                    <span class="icon"><ion-icon id="reset-password-icon" name="eye-off-outline" onclick="toggleResetNewPasswordVisibility()"></ion-icon></span>
+                    <input id="reset-input-password" type="password" required>
                     <label>New Password</label>
                 </div>
                 <div class="input-box">
-                    <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
-                    <input type="password" name="txtnewpassword" required>
+                    <span class="icon"><ion-icon id="reset-confirm-password-icon" name="eye-off-outline" onclick="toggleResetConfirmPasswordVisibility()"></ion-icon></span>
+                    <input id="reset-input-confirm-password" type="password" name="txtnewpassword" required>
                     <label>Confirm Password</label>
                 </div>
                 <div class="btn-box">
@@ -295,7 +294,152 @@ mysqli_close($connection);
 
     </div>
 
-    <script src="js/script3.js"></script>
+    <script>
+        function togglePasswordVisibility() {
+            var passwordInput = document.getElementById("input-password");
+            var passwordIcon = document.getElementById("password-icon");
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                passwordIcon.setAttribute("name", "eye-outline");
+            } else {
+                passwordInput.type = "password";
+                passwordIcon.setAttribute("name", "eye-off-outline");
+            }
+        }
+        function toggleRegisterPasswordVisibility() {
+            var passwordInput = document.getElementById('register-input-password');
+            var passwordIcon = document.getElementById('register-password-icon');
+
+            if (passwordInput.type === 'password') {
+                // If the password field is currently hidden, show it
+                passwordInput.type = 'text';
+                passwordIcon.name = 'eye-outline'; // Change the eye icon to open eye
+            } else {
+                // If the password field is currently visible, hide it
+                passwordInput.type = 'password';
+                passwordIcon.name = 'eye-off-outline'; // Change the eye icon to closed eye
+            }
+        }
+        function toggleRegisterConfirmPasswordVisibility() {
+            var confirmPasswordInput = document.getElementById('register-input-confirm-password');
+            var confirmPasswordIcon = document.getElementById('register-confirm-password-icon');
+
+            if (confirmPasswordInput.type === 'password') {
+                // If the confirm password field is currently hidden, show it
+                confirmPasswordInput.type = 'text';
+                confirmPasswordIcon.name = 'eye-outline'; // Change the eye icon to open eye
+            } else {
+                // If the confirm password field is currently visible, hide it
+                confirmPasswordInput.type = 'password';
+                confirmPasswordIcon.name = 'eye-off-outline'; // Change the eye icon to closed eye
+            }
+        }
+        function toggleResetNewPasswordVisibility() {
+            var passwordInput = document.getElementById('reset-input-password');
+            var passwordIcon = document.getElementById('reset-password-icon');
+
+            if (passwordInput.type === 'password') {
+                // If the password field is currently hidden, show it
+                passwordInput.type = 'text';
+                passwordIcon.name = 'eye-outline'; // Change the eye icon to open eye
+            } else {
+                // If the password field is currently visible, hide it
+                passwordInput.type = 'password';
+                passwordIcon.name = 'eye-off-outline'; // Change the eye icon to closed eye
+            }
+        }
+        function toggleResetConfirmPasswordVisibility() {
+            var confirmPasswordInput = document.getElementById('reset-input-confirm-password');
+            var confirmPasswordIcon = document.getElementById('reset-confirm-password-icon');
+
+            if (confirmPasswordInput.type === 'password') {
+                // If the confirm password field is currently hidden, show it
+                confirmPasswordInput.type = 'text';
+                confirmPasswordIcon.name = 'eye-outline'; // Change the eye icon to open eye
+            } else {
+                // If the confirm password field is currently visible, hide it
+                confirmPasswordInput.type = 'password';
+                confirmPasswordIcon.name = 'eye-off-outline'; // Change the eye icon to closed eye
+            }
+        }
+        function ValidateLoginForm() {
+            RemoveAllErrorMessage();
+
+            var LoginPassword = document.getElementById('input-password').value;
+            var PasswordValidationMessage;
+            
+            PasswordValidationMessage = isValidPassword(LoginPassword);
+            if(PasswordValidationMessage != "valid"){
+                ShowErrorMessage('input-password',PasswordValidationMessage);
+                return false;
+            }
+            
+            return true;
+        }
+        function RemoveAllErrorMessage(){
+
+            var allErrorMessage = document.getElementsByClassName('error-message');
+            var allErrorFiled = document.getElementsByClassName('error-input');
+            var i;
+
+            for(i=(allErrorMessage.length - 1); i>=0; i--){
+                allErrorMessage[i].remove();
+            }
+
+            for(i=(allErrorFiled.length-1);i>=0;i--){
+                allErrorFiled[i].classList.remove('error-input');
+            }
+        }
+        function ShowErrorMessage(InputBoxID,Message){
+
+            var InputBox = document.getElementById(InputBoxID);
+            InputBox.classList.add('error-input');
+            InputBox.focus();
+
+            var ErrorMessageElement = document.createElement("p");
+            ErrorMessageElement.innerHTML = Message;
+            ErrorMessageElement.classList.add('error-message');
+            ErrorMessageElement.setAttribute("id",InputBoxID+'-error');
+
+            InputBox.parentNode.insertBefore(ErrorMessageElement, InputBox.nextSibling);
+
+        }
+        function isValidEmail(email){
+
+            const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+            if(email == ""){
+                return "Please fill the field.";
+            }
+
+            if(emailRegex.test(email) == false){
+                return "This is not a valid email.";
+            }
+
+            return "valid";
+        }
+
+        function isValidPassword(password) {
+
+            const minLength = 8;
+            const maxLength = 32;
+            const letterNumberRegexSpecialChar = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*])[a-zA-Z\d!@#$%^&*]{8,}$/;
+
+            if(password == ""){
+                return "Please fill the field."
+            }
+
+            if (password.length < minLength || password.length > maxLength) {
+                return "Password length should be minimum 8 & maximum 32 characters.";
+            }
+
+            if (!letterNumberRegexSpecialChar.test(password)) {
+                return "Password should contain alphabetic, numeric and special characters.";
+            }
+            return "valid";
+        }
+    </script>
+    <script src="script3.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 

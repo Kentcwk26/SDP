@@ -59,6 +59,7 @@
     <?php
       include "dbcon.php";
       include "header2.php";
+      sleep(1);
     ?>
     <b><h1 style="text-align:center; padding: 15px 0;"><u>Manage Booking Services</u></h1></b>
     <table style="margin-left: auto; margin-right: auto;">

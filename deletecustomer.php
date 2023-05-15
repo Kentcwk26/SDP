@@ -105,25 +105,25 @@
             </tr>
         </table></b>
     </div>
-        <form action="#" method="POST">
-        <center><h3 style="color: red">Are you sure to delete this customer record? This cannot be unchanged once click the 'Delete' button.</h3>
-            <input type="submit" name="delete" value="Delete">
-            <input type="button" value="Cancel" onclick="window.open('managecustomer.php','_self')"></center><br>
-        </form>
-        <?php
-            if(isset($_POST['delete'])){
-                $query1 = "DELETE customer.customer_id, customer.customer_name, customer.customer_profile, customer_contactnumber, customer.customer_email, customer.customer_username, customer.customer_password, pet.pet_id, pet.pet_name, pet.pet_age, pet.pet_type, pet.pet_gender, pet.pet_allergy, pet.customer_contact, pet.customer_name FROM customer INNER JOIN pet ON customer.customer_name = pet.customer_name WHERE customer.customer_name='$name'";
-                $result = mysqli_query($connection,$query1);
-                if($result){
-                    echo "<script>alert('Customer record deleted successfully!')</script>";
-                    echo "<script>window.open('managecustomer.php','_self')</script>";
-                } else {
-                    echo "<script>alert('failed to delete!')</script>";
-                }
+    <form action="#" method="POST">
+    <center><h3 style="color: red">Are you sure to delete this customer record? This cannot be unchanged once click the 'Delete' button.</h3>
+        <input type="submit" name="delete" value="Delete">
+        <input type="button" value="Cancel" onclick="window.open('managecustomer.php','_self')"></center><br>
+    </form>
+    <?php
+        if(isset($_POST['delete'])){
+            $query1 = "DELETE customer.customer_id, customer.customer_name, customer.customer_profile, customer_contactnumber, customer.customer_email, customer.customer_username, customer.customer_password, pet.pet_id, pet.pet_name, pet.pet_age, pet.pet_type, pet.pet_gender, pet.pet_allergy, pet.customer_contact, pet.customer_name FROM customer INNER JOIN pet ON customer.customer_name = pet.customer_name WHERE customer.customer_name='$name'";
+            $result = mysqli_query($connection,$query1);
+            if($result){
+                echo "<script>alert('Customer record deleted successfully!')</script>";
+                echo "<script>window.open('managecustomer.php','_self')</script>";
+            } else {
+                echo "<script>alert('failed to delete!')</script>";
             }
-        ?>
-        <?php 
-            mysqli_close($connection);
-        ?>
+        }
+    ?>
+    <?php 
+        mysqli_close($connection);
+    ?>
 </body>
 </html>

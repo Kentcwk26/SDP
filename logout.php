@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pet Paradise Pet Care System</title>
+    <title>Log Out</title>
 </head>
 <body>
-<a href="index.php"><img src="img/profile.jpg" alt="logo"></a>
-<h1>Pet Paradise</h1>
-<p>Pet Care System</p>
+    <?php
+        echo "<script>alert('Log Out!')<script>";
+        session_start();
+        session_destroy();
+        header("Location: index.php");
+    ?>
 </body>
 </html>

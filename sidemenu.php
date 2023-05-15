@@ -20,7 +20,7 @@
 			<li><a href="salesreport.php">Sales Report</a></li>
 			<li><a href="cbh.php">Customer Booking History</a></li>
 			<li><a href="cph.php">Customer Purchase History</a></li>
-			<li><a href="#">Log Out</a></li>
+			<li><a href="logout.php">Log Out</a></li>
 		</ul>
 	</div>
 	<div class="menu-icon">&#9776;</div>

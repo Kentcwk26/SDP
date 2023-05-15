@@ -53,7 +53,7 @@
 <body style="background-color: #fae094;">
     <?php
         include "dbcon.php";
-        include "header.php";
+        include "header1.php";
     ?>
     <div style="clear:both;"></div>
     <div id="bar">

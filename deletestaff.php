@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" type="image/x-icon" href="png\Icon.png">
-    <title>Edit Staff</title>
+    <title>Delete Staff</title>
 <style>
     #box{
         width: 1468px;
@@ -24,6 +24,7 @@
         padding-bottom: 20px;
     }
     td{
+        width: 200px;
         padding: 16px;
         font-size: 18px;
         text-align: left;
@@ -37,20 +38,26 @@
         padding: 8px;
         float: right;
     }
-    input[type=button]{
+    input[type=button], input[type=submit]{
         width: 100px;
         height: 30px;
         margin: 5px;
         border-radius: 10%;
         font-size: 14px;
     }
-    input[type=button]:active {
+    input[type=button]:active, input[type=submit]:active {
         box-shadow: 0 5px none;
         transform: translateY(2px);
     }
     input[type=button]:hover{
         background-color: black;
         color: white;
+        font-weight:bold;
+        cursor: pointer;
+    }
+    input[type=submit]:hover{
+        background-color: red;
+        color: black;
         font-weight:bold;
         cursor: pointer;
     }
@@ -61,12 +68,6 @@
         background-color: #D9BB97;
         margin: 10px;
         flex-direction: column;
-    }
-    a:hover, a:visited:hover{
-        color: orange;
-    }
-    a:visited{
-        color: blue;
     }
 </style>
 </head>
@@ -86,9 +87,9 @@
             $username = $row['staff_username'];
             $contact = $row['staff_contact'];
             $desc = $row['staff_desc'];
-        ?>
-    <div id="box" style="margin-top: 10px;">
-        <center><h1 style="padding-top: 5px"><b>Staff Information</b></h1></center>
+    ?>
+    <div id="box">
+<center><h1 style="padding-top: 5px"><b>Staff Information</b></h1>
         <table>
             <tr>
                 <td>Staff ID:</td>
@@ -107,19 +108,25 @@
                 <td><?php echo $desc; ?></td>
             </tr>
         </table>
-        <table>
-            <tr>
-                <td>
-                    <a href="editstaff.php?id=<?php echo $row["staff_id"]; ?>"><button class="button1">Edit</button></a>
-                    <a href="deletestaff.php?id=<?php echo $row["staff_id"]; ?>"><button class="button2">Delete</button></a>
-                    <input type="button" value="Cancel" onclick="window.open('managestaff.php','_self')">
-                </td>
-            </tr>
+        <form action="#" method="POST">
+        <h3 style="color: red">Are you sure to delete this customer record? This cannot be unchanged once click the 'Delete' button.</h3>
+            <input type="submit" name="delete" value="Delete">
+            <input type="button" value="Cancel" onclick="window.open('managestaff.php','_self')"></center><br>
+        </form>
         <?php
+            if(isset($_POST['delete'])){
+                $query1 = "DELETE from staff where staff_id = '$id'";
+                $result = mysqli_query($connection,$query1);
+                if($result){
+                    echo "<script>alert('Staff record deleted successfully!')</script>";
+                    echo "<script>window.open('managestaff.php','_self')</script>";
+                } else {
+                    echo "<script>alert('failed to delete!')</script>";
+                }
+            }
             }   
             mysqli_close($connection);
         ?>
-    </table>
-</div><br>
+    </div><br>
 </body>
 </html>

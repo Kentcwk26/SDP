@@ -10,10 +10,21 @@ const previousregisterLink = document.querySelector('.previousregister-linkbtn')
 const returnforgotLink = document.querySelector('.returnforgot-linkbtn');
 const btnPopup = document.querySelector('.btnLogin-popup');
 const iconClose = document.querySelector('.icon-close');
+const registerButton = document.querySelector('.register-button');
+const loginButton = document.querySelector('.login-button');
 
-registerLink.addEventListener('click', ()=> {
+const activateRegister = () => {
     wrapper.classList.add('active');
-});
+};
+
+registerLink.addEventListener('click', activateRegister);
+registerButton.addEventListener('click', activateRegister);
+
+const activateLogin = () => {
+    wrapper.classList.remove('active');
+}
+
+loginButton.addEventListener('click', activateLogin);
 
 loginLink.addEventListener('click', ()=> {
     wrapper.classList.remove('active'); 
@@ -59,3 +70,4 @@ btnPopup.addEventListener('click', ()=> {
 iconClose.addEventListener('click', ()=> {
     wrapper.classList.remove('active-popup');
 });
+

@@ -6,23 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="png\Icon.png">
     <link rel="stylesheet" href="css/style.css">
-    <title>Admin Index</title>
+    <title>Admin</title>
 </head>
+<style>
+    .box{
+        width: 200px;
+        height: 80px;
+        background-color: black;
+        color: white;
+        margin: 20px 40px;
+        padding: 120px 20px;
+        font-size: 25px;
+        font-weight: bold;
+    }
+</style>
 <body>
     <?php
         include "dbcon.php";
         sleep(1);
     ?>
-    <center><div id="adminIndexHeader"><a href="admin.php"><img src="png/Logo4.png"></a></div></center>
-    <center><br><h1><b>Welcome back, Admin!</b></h1>
+    <center><div id="adminIndex"><a href="admin.php"><img src="png/Logo4.png"></a></div>
+    <br><h1><b>Welcome back, Admin!</b></h1>
     <div style="display:flex; justify-content: center;">
         <a href="manageuser.php">
             <div class="box">Manage Users</div>
         </a>
         <a href="gsr.php">
             <div class="box">Sales Report</div>
-    </div>            
-    <div style="display:flex; justify-content: center;">
         </a>
         <a href="staffmain.php">
             <div class="box">Staff Page</div>

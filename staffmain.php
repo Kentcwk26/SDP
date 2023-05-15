@@ -15,7 +15,7 @@
         background-color: #f7d0af;
         padding: 90px;
         display: inline-block;
-        border-radius: 5px;
+        border-radius: 20px;
         margin-left: 30px;
         margin-right: 30px;
         font-weight: bold;
@@ -34,6 +34,7 @@
 </style>
 <body>
     <?php
+        include "dbcon.php";
         include "header2.php";
     ?>
     <div style="margin: 20px">

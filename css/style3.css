@@ -82,7 +82,7 @@ header {
     position: relative;
     top: 200px;
     width: 400px;
-    height: 470px;
+    height: 485px;
     background: #F3e0b0;
     /* background: transparent; */
     border: 2px solid rgba(255, 255, 255, .5);
@@ -102,7 +102,7 @@ header {
 }
 
 .wrapper.active {
-    height: 700px;  
+    height: 720px;  
 }
 
 .wrapper.forgot {
@@ -274,7 +274,7 @@ header {
     font-size: .9em;
     color: #162938;
     font-weight: 500;
-    margin: -15px 0 15px;
+    margin: 0px 0 15px;
     display: flex;
     justify-content: space-between;
 }
@@ -430,4 +430,18 @@ header {
 #formSwitchBtn .active {
 	color: #fff;
 	background: #747474;
+}
+
+.error-input{
+	border: 1px solid #ff5b5b;
+}
+
+.error-message{
+	font-size: 11px; 
+	font-weight: bold; 
+	color: #ff5b5b;
+	text-align: left; 
+	margin: 0px; 
+	padding: 0px; 
+	margin-top: 2px;
 }

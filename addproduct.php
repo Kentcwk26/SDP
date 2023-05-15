@@ -87,9 +87,7 @@
         include "dbcon.php";
         include "header2.php";
     ?>
-    <br>
-    <b><h1 style="text-align:center; padding-bottom: 10px;"><u>Add Product</u></h1></b>
-    <br>
+    <br><b><h1 style="text-align:center; padding-bottom: 10px;"><u>Add Product</u></h1></b>
     <form action="#" method="post">
     <table class="center">
         <tr>
@@ -127,7 +125,7 @@
     </table>
     <table class="center" style="margin-top: 20px;">
         <tr>
-            <td colspan="2"><input type="button" value="Cancel" onclick="window.open('WHmanageproducts.php','_self')">
+            <td colspan="2"><input type="button" value="Cancel" onclick="window.open('manageproduct.php','_self')">
             <td colspan="2"><input type="reset" name="reset" value="Reset"></td>
             <td colspan="2"><input type="submit" name="submit" value="Complete"></td>
         </tr>
@@ -162,7 +160,7 @@
                     if($result){
                         ?>
                         <script>
-                            window.location.href = "WHmanageproducts.php";
+                            window.location.href = "manageproduct.php";
                             alert("Adding product");
                         </script>
                         <?php
