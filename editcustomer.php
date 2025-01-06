@@ -25,16 +25,19 @@
         font-weight:bold;
     }
     input[type=text],input[type=email],input[type=password], input[type=number]{
-        width: 1250px;
+        width: 1200px;
         height: 30px;
         margin: 5px;
         padding: 4px 10px;
     }
     select{
-        width: 1274px;
+        width: 1224px;
         height: 40px;
         margin: 5px;
         padding: 4px 10px;
+    }
+    td{
+        padding-left: 20px;
     }
     input[type=submit],input[type=reset],input[type=button]{
         width: 100px;
@@ -116,7 +119,7 @@
             $email = $row['customer_email'];
             $contact = $row['customer_contactnumber'];
         }
-        $query2 = "SELECT customer.customer_name, pet.pet_id, pet.pet_name,pet.pet_age, pet.pet_type, pet.pet_gender, pet.pet_allergy FROM customer INNER JOIN pet ON customer.customer_name = pet.customer_name WHERE customer.customer_name='$name'";
+        $query2 = "SELECT customer.customer_name, pet.pet_id, pet.pet_name,pet.pet_age, pet.pet_type, pet.pet_gender, pet.pet_allergy FROM customer INNER JOIN pet ON customer.customer_id = pet.customer_id WHERE customer.customer_id='$id'";
         $result2 = mysqli_query($connection,$query2);
         while ($row1 = mysqli_fetch_assoc($result2)){
             $petid = $row1['pet_id'];
@@ -235,19 +238,19 @@
             </tr>
             <tr>
                 <td>Pet ID: </td>
-                <td><input type="text" required name="petid" value="<?php echo $petid; ?>"></td>
+                <td style="padding-left: 10px"><input type="text" required name="petid" value="<?php echo $petid; ?>"></td>
             </tr>
             <tr>
                 <td>Pet Name: </td>
-                <td><input type="text" required name="petname" value="<?php echo $petname; ?>"></td>
+                <td style="padding-left: 10px"><input type="text" required name="petname" value="<?php echo $petname; ?>"></td>
             </tr>
             <tr>
                 <td>Pet Age: </td>
-                <td><input type="number" required name="petage" min=0 max=5 step=0.5 value="<?php echo $petage; ?>"></td>
+                <td style="padding-left: 10px"><input type="number" required name="petage" min=0 max=5 step=0.5 value="<?php echo $petage; ?>"></td>
             </tr>
             <tr>
                 <td>Pet Type: </td>
-                <td><label for="pettype"></label>
+                <td style="padding-left: 10px"><label for="pettype"></label>
                 <select name="pettype" id="pettype">
                     <option value="Dog" <?php if($pettype == "Dog"){ echo "selected";}?>>Dog</option>
                     <option value="Cat" <?php if($pettype == "Cat"){ echo "selected";}?>>Cat</option>
@@ -259,7 +262,7 @@
             </tr>
             <tr>
                 <td>Pet Gender: </td>
-                <td><label for="petgender"></label>
+                <td style="padding-left: 10px"><label for="petgender"></label>
                 <select name="petgender" id="petgender">
                     <option value="Male" <?php if($petgender == "Male"){ echo "selected";}?>>Male</option>
                     <option value="Female" <?php if($petgender == "Female"){ echo "selected";}?>>Female</option>
@@ -267,7 +270,7 @@
             </tr>
             <tr>
                 <td>Pet Allergy: </td>
-                <td><input type="text" required name="petallergy" value="<?php echo $petallergy; ?>"></td>
+                <td style="padding-left: 10px"><input type="text" required name="petallergy" value="<?php echo $petallergy; ?>"></td>
             </tr>
         </table> 
         <table>

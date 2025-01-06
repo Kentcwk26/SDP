@@ -56,7 +56,7 @@
     include "header2.php";
   ?>
     <b><h1 style="text-align:center; padding: 10px 20px;"><u>Manage Medicine</u></h1></b>
-    <table style="text-align: center; ">
+    <table style="text-align: center; width: 90%; margin-left: auto; margin-right: auto;">
         <thead>
           <tr>
             <th>Medicine ID</th>

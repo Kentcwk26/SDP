@@ -16,10 +16,11 @@
     }
 </style>
 <body>
+    <div style="clear:both"></div>
     <div id="header">
         <a href="staffmain.php" style="float: left; padding: 2px 20px;"><img src="png\Logo4.png"></a>
-        <h1 style="text-align: center; padding-right: 236px; padding-top: 60px; ">Pet Paradise</h1>
+        <h1 style="text-align: center; padding-right: 236px; padding-top: 65px; color: black;">Pet Paradise</h1>
     </div>
-    <div style="clear: both"></div>
+    <div style="clear:both"></div>
 </body>
 </html>

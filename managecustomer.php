@@ -86,7 +86,6 @@
         ?>
         </tr>
     </table>
-    <div id="smallbox"><label><a href="addcustomer.php" style="text-decoration: none; font-size: 40px; color: black;">+</a></label></div>
     </center>
 </body>
 </html>

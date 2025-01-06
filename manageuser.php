@@ -51,9 +51,6 @@
         <a href="managecustomer.php">
             <div class="box1">Customer</div>
         </a>
-        <a href="managepet.php">
-            <div class="box4">Pet</div>
-        </a>
         <a href="managestaff.php">
             <div class="box2">Staff</div>
         </a>

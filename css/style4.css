@@ -5,6 +5,7 @@
 	font-family: 'Roboto', sans-serif;
 	
 }
+
 body{
 	background-color:#F6E2A6;
 }
@@ -19,6 +20,7 @@ body{
 	margin:20px auto;
 	margin-top: 30px;
 }
+
 .heading1{
 	width:100%;
 	display: flex;
@@ -28,12 +30,14 @@ body{
 	text-align: center;
 	margin:20px auto;
 }
+
 .heading h1{
 	font-size: 50px;
 	color: #000;
 	margin-bottom: 25px;
 	position: relative;
 }
+
 .heading h1::after{
 	content:"";
 	position: absolute;
@@ -43,50 +47,60 @@ body{
 	margin:0 auto;
 	background-color: #4caf50;
 }
+
 .heading p{
 	font-size: 18px;
 	color:#666;
 	margin-bottom: 5px;
 	margin-top: 35px;
 }
+
 .container{
 	width:90px;
 	margin:0 auto;
 	padding:10px 20px;
 }
+
 .about{
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	flex-wrap: wrap;
 }
+
 .about-image{
 	flex:1;
 	margin-right: 40px;
 	overflow: hidden;
 }
+
 .about-image img{
 	max-width: 100%;
 	height: auto;
 	display: block;
 	transition: 0.5s ease;
 }
+
 .about-image:hover img{
 	transform: scale(1.2);
 }
+
 .about-content{
 	flex:1;
 }
+
 .about-content h2{
 	font-size: 23px;
 	margin-bottom: 15px;
 	color:#333;
 }
+
 .about-content p{
 	font-size: 18px;
 	line-height: 1.5;
 	color:#666;
 }
+
 .about-content .read-more{
 	display: inline-block;
 	padding:10px 20px;
@@ -95,14 +109,17 @@ body{
 	font-size: 19px;
 	text-decoration:none;
 	border-radius:25px;
-	margin-top: 15px transition:0.3s ease;
+	margin-top: 15px; 
+	transition: 0.3s ease;
 	text-align:center;
 	margin-left:auto;
 	margin-right:auto;
 }
+
 .about-content .read-more:hover{
 	background-color:#3e8e41;
 }
+
 .services{
 	width:85%;
 	display:flex;
@@ -111,6 +128,7 @@ body{
 	margin:75px auto;
 	text-align:center;
 }
+
 .card{
 	width:100%;
 	height:1000px;
@@ -124,6 +142,7 @@ body{
 	border-radius:10px;
 	cursor:pointer;
 }
+
 .card1{
 	width:100%;
 	height:1000px;
@@ -137,40 +156,48 @@ body{
 	border-radius:10px;
 	cursor:pointer;
 }
+
 .card .icon{
 	font-size: 35px;
 	margin-bottom:10px;
 }
+
 .card h2{
 	font-size:28px;
 	color:#c94f4f;
 	margin-bottom:20px;
 }
+
 .card1 h2{
 	font-size:28px;
 	color:#c94f4f;
 	margin-bottom:20px;
 }
+
 .card p{
 	font-size:17px;
 	margin-bottom:30px;
 	line-height:1.5;
 	color:#5e5e5e;
 }
+
 .card1 p{
 	font-size:17px;
 	margin-bottom:30px;
 	line-height:1.5;
 	color:#5e5e5e;
 }
+
 .card:hover{
 	background-color:#b8d4de;
 	transition:0.4s ease;
 }
+
 .card1:hover{
 	background-color:#b8d4de;
 	transition:0.4s ease;
 }
+
 .button{
 	font-size:15px;
 	text-decoration:none;
@@ -180,6 +207,7 @@ body{
 	border-radius:5px;
 	letter-spacing:1px;
 }
+
 .button1{
 	font-size:15px;
 	text-decoration:none;
@@ -189,14 +217,17 @@ body{
 	border-radius:5px;
 	letter-spacing:1px;
 }
+
 .button:hover{
 	background-color:#c94f4f;
 	transition:0.4s ease;
 }
+
 .button1:hover{
 	background-color:#c94f4f;
 	transition:0.4s ease;
 }
+
 .left{
     margin:auto;
 	max-width:400px;
@@ -205,6 +236,7 @@ body{
 	background-color: #ffd9b3;
 	line-height:30px;
 }
+
 .left1{
     margin:auto;
 	max-width:700px;
@@ -213,6 +245,7 @@ body{
 	background-color: #ffd9b3;
 	line-height:30px;
 }
+
 .left2{
     margin:auto;
 	max-width:700px;
@@ -222,49 +255,62 @@ body{
 	line-height:30px;
 	line-height:37px;
 }
+
 .padtop{
 	padding-top:100px;
 }
+
 .move{
 	padding-bottom:30px;
 }
+
 .img{
 	height:180px;
 }
+
 .img1{
 	height:250px;
 }
+
 .box{
 	height:150px;
 }
+
 textarea{
 	resize:none;
 }
+
 ul{
 	list-style-position: inside;
 	margin-left: 0;
 	padding-left: 1em;
 	text-indent: -0.925em;
 }
+
 ul li:before {
   position: absolute;
 }
+
 br{
 	padding-bottom:25px;
 }
+
 input{
 	width:100%;
 	padding-bottom:15px;
 	border-radius:4px;
 }
+
 textarea{
 	width:100%;
 	padding-bottom:30px;
 	border-radius:4px;
 }
+
 select{
 	cursor:pointer;
 }
+
 button[type="submit"]{
 	background-color:blue;
 	color:white;
@@ -274,10 +320,12 @@ button[type="submit"]{
 	margin-top:20px;
 	cursor:pointer;
 }
+
 button:hover{
 	background-color:#3e8e41;
 	transition:0.4s ease;
 }
+
 ol{
 	padding: 0;
 	list-style-position: inside;
@@ -285,6 +333,7 @@ ol{
 	padding-left: 1em;
 	text-indent: -0.925em;
 }
+
 ol li:before {
 	list-style-type:decimal;
 	list-style-position: inside;

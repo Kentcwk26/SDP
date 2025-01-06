@@ -95,8 +95,8 @@
             </tr>
             <tr>
                 <td><label for="Venue" style="color: white">Venue:</label></td>
-                <td><label for="pettype"></label>
-                <select name="pettype" id="pettype">
+                <td><label for="Venue"></label>
+                <select name="Venue" id="Venue">
                     <option value="None">- Please Select Room -</option>
                     <option value="Room 1">Room 1 (Pet Medicial)</option>
                     <option value="Room 2">Room 2 (Pet Medicial)</option>
@@ -181,7 +181,19 @@
             if($result){
                 $query = "DELETE FROM appointment WHERE appointment_id = '$id'";
                 $result = mysqli_query($connection,$query);
-                if($result){
+                $prefix = "D";
+                $last_id = 0;
+                $sql = "SELECT invoice_id FROM invoice ORDER BY invoice_id DESC LIMIT 1";
+                $result = mysqli_query($connection,$sql);
+                if (mysqli_num_rows($result) > 0) {
+                    $row = mysqli_fetch_assoc($result);
+                    $last_id = substr($row["invoice_id"], 1);
+                }
+                $new_id = $prefix . ($last_id + 1);
+                $invoice_id = $new_id;
+                $query2 = "INSERT INTO `invoice`(`invoice_id`, `customer_id`, `product_id`, `booking_id`) VALUES ('$invoice_id','$customer','','$booking_id')";
+                $result2 = mysqli_query($connection, $query2);
+                if($result and $result2){
                     echo "<script>alert('booking Completed!')</script>";
                     echo "<script>window.open('managebookingservices.php','_self')</script>";
                 }

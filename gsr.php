@@ -61,22 +61,22 @@
     <center><div id="adminIndexHeader"><a href="admin.php"><img src="png/Logo4.png"></a></div>
     <div id="blackbox"><h1 style="color: white; padding-top: 120px;">Generate Sales Report</h1>
         <center><div id="button" style="margin-top: 10px; margin-bottom: 5px;">
-        <form  method=post>
-            <label for="date"><input type="date" id="date" name="date" style="margin-left: 10px; margin-right: 10px;"></label>
+        <form method=post>
+            <label for="date"><input type="date" id="date" name="datetime" style="margin-left: 10px; margin-right: 10px;"></label>
             <input type="submit" name="Generate" value="Generate" style="margin-top: 40px;">
         </form>
     </div>
     <?php
         if(isset($_POST["Generate"])){
-            if(empty($_POST['date'])){
+            if(empty($_POST['datetime'])){
                 echo "<script>alert('Please enter a date')</script>";
             } else {
                 $d = $_POST['date'];
-                $query = "SELECT * FROM purchase where purchase_date = '$d'";
+                $query = "SELECT * FROM purchase where purchase_datetime = '$d'";
                 $result = mysqli_query($connection,$query);
                 $row = mysqli_fetch_assoc($result);
-                if($row['purchase_date'] == $d){
-                    $_SESSION['date'] = $d;
+                if($row['purchase_datetime'] == $d){
+                    $_SESSION['datetime'] = $d;
                     ?>
                     <script>
                         window.location.href = "vsr.php";

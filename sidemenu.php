@@ -3,6 +3,9 @@
 <head>
 	<title>Simple Side Menu</title>
 	<link rel="stylesheet" href="css\sidemenu.css">
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" type="image/x-icon" href="png/Icon.png" >
 </head>
 <style>
 	a{

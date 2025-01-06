@@ -166,48 +166,48 @@
                 <td colspan="2"><br><input type="button" value="Cancel" onclick="window.open('managestaff.php','_self')"></td>
             </tr>
         </table>
-        <?php
-            function test_input($data) {
-                $data = trim($data);
-                $data = stripslashes($data);
-                $data = htmlspecialchars($data);
-                return $data;
-            }
-            if(isset($_POST['submit'])){
-                if (empty($_POST["contact"]) or empty($_POST["staff"]) or empty($_POST["username"]) or empty($_POST["password"]) or empty($_POST["description"])) {
-                    echo "<script>alert('All the staff details are required')</script>";
+    </form>
+    <?php
+        function test_input($data) {
+            $data = trim($data);
+            $data = stripslashes($data);
+            $data = htmlspecialchars($data);
+            return $data;
+        }
+        if(isset($_POST['submit'])){
+            if (empty($_POST["contact"]) or empty($_POST["staff"]) or empty($_POST["username"]) or empty($_POST["password"]) or empty($_POST["description"])) {
+                echo "<script>alert('All the staff details are required')</script>";
+            } else {
+                $name = test_input($_POST["staff"]);
+                $username = test_input($_POST["description"]);
+                if (!preg_match("/^[a-zA-Z-' ]*$/",$name)or(!preg_match("/^[a-zA-Z-' ]*$/",$username))){
+                    echo "<script>alert('Wrong input either in the name or username section!')</script>";
                 } else {
-                    $name = test_input($_POST["staff"]);
-                    $username = test_input($_POST["description"]);
-                    if (!preg_match("/^[a-zA-Z-' ]*$/",$name)or(!preg_match("/^[a-zA-Z-' ]*$/",$username))){
-                        echo "<script>alert('Wrong input either in the name or username section!')</script>";
-                    } else {
-                        $staffid = $id;
-                        $staff = $_POST['staff'];
-                        $contact = $_POST['contact'];
-                        $username = $_POST['username'];
-                        $description = $_POST['description'];
-                        $sql= "UPDATE `staff` SET `staff_name`='$staff',`staff_desc`='$description',`staff_contact`='$contact',`staff_username`='$username' WHERE `staff_id`='$staffid'";
-                        $result2 = mysqli_query($connection,$sql);
-                        if($result2){
-                            ?>
-                            <script>
-                                window.location.href = "managestaff.php";
-                                alert("Edit staff success!");
-                            </script>
-                            <?php
-                        }
-                        else{
-                            ?>
-                            <script>
-                                alert("Error, please try again");
-                            </script>
+                    $staffid = $id;
+                    $staff = $_POST['staff'];
+                    $contact = $_POST['contact'];
+                    $username = $_POST['username'];
+                    $description = $_POST['description'];
+                    $sql= "UPDATE `staff` SET `staff_name`='$staff',`staff_desc`='$description',`staff_contact`='$contact',`staff_username`='$username' WHERE `staff_id`='$staffid'";
+                    $result2 = mysqli_query($connection,$sql);
+                    if($result2){
+                        ?>
+                        <script>
+                            window.location.href = "managestaff.php";
+                            alert("Edit staff success!");
+                        </script>
                         <?php
-                        }
+                    }
+                    else{
+                        ?>
+                        <script>
+                            alert("Error, please try again");
+                        </script>
+                    <?php
                     }
                 }
             }
-        ?>
-    </form>
+        }
+    ?>
 </body>
 </html>

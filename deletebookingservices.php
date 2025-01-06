@@ -90,7 +90,7 @@
     <?php
       if(isset($_POST['submit'])){
         $search = $_POST['record'];
-        $query = "SELECT * FROM appointment WHERE appointment_id LIKE '%$search%' OR cus_name LIKE '%$search%' OR appointment_date LIKE '%$search%' OR appointment_time LIKE '%$search%' OR booking_service LIKE '%$search%'";
+        $query = "SELECT customer.customer_id, customer.customer_name, pet.pet_name, appointment.pet_id, appointment_id, appointment_datetime, appointment_service FROM `appointment` INNER JOIN customer ON appointment.customer_id = customer.customer_id INNER JOIN pet ON appointment.pet_id = pet.pet_id WHERE appointment.appointment_id LIKE '%$search%' OR appointment.customer_id LIKE '%$search%' OR appointment_datetime LIKE '%$search%' OR appointment_service LIKE '%$search%'";
         $result = mysqli_query($connection,$query);
       ?>
       <table class="center" style="margin-top: 20px; width: 68%">
@@ -98,18 +98,16 @@
           <td>Appointment ID</td>
           <td>Customer Name</td>
           <td>Booking Service</td>
-          <td>Booking Date</td>
-          <td>Booking Time</td>
+          <td>Booking Datetime</td>
         </tr>
           <?php
             if ($result->num_rows > 0) {
               while ($row = $result->fetch_assoc()) {
                 echo "<tr>";
                 echo "<td>" . $row['appointment_id'] . "</td>";
-                echo "<td>" . $row['cus_name'] . "</td>";
-                echo "<td>" . $row['appointment_date'] . "</td>";
-                echo "<td>" . $row['appointment_time'] . "</td>";
-                echo "<td>" . $row['booking_service'] . "</td>";
+                echo "<td>" . $row['customer_name'] . "</td>";
+                echo "<td>" . $row['appointment_datetime'] . "</td>";
+                echo "<td>" . $row['appointment_service'] . "</td>";
                 echo "</tr>";
               }
             } else {
@@ -120,7 +118,7 @@
     </table>
     <table class="center" style="margin-top: 10px" >
       <tr>
-        <td colspan="3" style="border: none"><input type="button" value="Cancel" onclick="window.open('managebookingservice.php','_self')"></td>
+        <td colspan="3" style="border: none"><input type="button" value="Cancel" onclick="window.open('managebookingservices.php','_self')"></td>
         <td style="border: none"><b>Final Decision:</b><input type="text" name="delete-booking" style="padding-left: 10px; margin-top: 5px; width: 360px; height: 20px;" placeholder="Kindly please insert the appointment ID will do"></td>
         <td style="border: none"><input type="submit" name="delete" value="Delete"></td>
       </tr>
@@ -128,15 +126,19 @@
   </table>
   <?php
     if(isset($_POST['delete'])){
+      if(empty($_POST['delete-booking'])){
+        echo "<script>alert('Empty input!')</script>";
+      } else {
         $deletebooking = $_POST['delete-booking'];
         $query1 = "DELETE FROM appointment WHERE appointment_id = '$deletebooking'";
         $results = mysqli_query($connection,$query1);
-        if($results){
-            echo "<script>alert('Appointment record deleted successfully!')</script>";
-            echo "<script>window.open('staffmain.php','_self')</script>";
-        } else {
-            echo "<script>alert('Appointment record failed to delete, please try again!')</script>";
-        }
+        if($result1 && $results){
+              echo "<script>alert('Appointment record deleted successfully!')</script>";
+              echo "<script>window.open('staffmain.php','_self')</script>";
+          } else {
+              echo "<script>alert('Appointment record failed to delete, please try again!')</script>";
+          }
+      }
     }
     mysqli_close($connection);
     ?>

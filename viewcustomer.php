@@ -10,7 +10,7 @@
 <style>
     #box{
         width: 1468px;
-        height: 500px;
+        height: 100%;
         background-color: #f1f1f1;
         border: 1px solid black;
         border-radius: 5px;
@@ -80,7 +80,18 @@
             $username = $row['customer_username'];
             $email = $row['customer_email'];
             $contact = $row['customer_contactnumber'];
-        ?>
+        }
+        $sql = "SELECT customer.customer_name, pet.pet_id, pet.pet_name,pet.pet_age, pet.pet_type, pet.pet_gender, pet.pet_allergy FROM customer INNER JOIN pet ON customer.customer_name = pet.customer_name WHERE customer.customer_name='$name'";
+        $result2 = mysqli_query($connection,$sql);
+        while ($row1 = mysqli_fetch_assoc($result2)){
+            $petid = $row1['pet_id'];
+            $petname = $row1['pet_name'];
+            $petage = $row1['pet_age'];
+            $pettype = $row1['pet_type'];
+            $petgender = $row1['pet_gender'];
+            $petallergy = $row1['pet_allergy']; 
+        }
+    ?>
     <div id="box" style="margin-top: 15px;">
         <div class="circle"><center>
             <a target="_blank" href="Avatar\<?php echo $profile?>.jpg"><img src="Avatar\<?php echo $profile; ?>.jpg" class="circular-img"></a>
@@ -107,6 +118,32 @@
                 <td><?php echo $contact; ?></td>
             </tr>
         </table>
+        <table style="padding: 20px; margin: 10px;">
+            <tr style="width: 100px;">
+                <td style="width:150px;">Pet ID:</td>
+                <td style="width: 400px;"><?php echo $petid; ?></td>
+            </tr>
+            <tr>
+                <td>Pet Name:</td>
+                <td><?php echo $petname; ?></td>
+            </tr>
+            <tr>
+                <td>Pet Age: </td>
+                <td><?php echo $petage; ?></td>
+            </tr>
+            <tr>
+                <td>Pet Type:</td>
+                <td><?php echo $pettype; ?></td>
+            </tr>
+            <tr>
+                <td>Pet Gender:</td>
+                <td><?php echo $petgender; ?></td>
+            </tr>
+            <tr>
+                <td>Pet Allergy:</td>
+                <td><?php echo $petallergy; ?></td>
+            </tr>
+        </table>
         <table>
             <tr>
                 <td style="padding-left: 40px;">
@@ -117,7 +154,6 @@
             </tr>
         </table>
     <?php
-        }   
         mysqli_close($connection);
     ?>
     </table>

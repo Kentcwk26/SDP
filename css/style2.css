@@ -3,15 +3,17 @@ body{
   background-size: cover;
   background-repeat: no-repeat;
   color: white;
-  }
+}
 
 #main p{
   font-family: arial;
 }
+
 #welcome{
   text-align: right;
   margin-right: 40px;
 }
+
 #nav{
   background-color: #dda44d;
   height: 60px;
@@ -23,96 +25,104 @@ body{
   margin-right: 30px;
   padding: 0;
   display: inline;
-  }
-  #nav ul li {
+}
+
+#nav ul li {
   display: inline-block;
   margin-right: -4px;
   position: relative;
   padding: 0 20px;
   font-size: 20px;
-  }
-  #nav ul li a{
-    text-decoration: none;
-    color: white;
-    display: block;
-    padding: 0 15px;
-    line-height: 60px;
+}
 
+#nav ul li a{
+  text-decoration: none;
+  color: white;
+  display: block;
+  padding: 0 15px;
+  line-height: 60px;
 }
+
 #nav ul li a:hover {
-    font-weight: bold;
-    background-color: #dbdbdb;
-    color: orange;
-    display: block;
-    border-radius: 20px;
-    transition: 0.3s;
+  font-weight: bold;
+  background-color: #dbdbdb;
+  color: orange;
+  display: block;
+  border-radius: 20px;
+  transition: 0.3s;
 }
-  #nav ul li ul {
+
+#nav ul li ul {
   position: absolute;
   width: auto;
   display: none;
   opacity: 0;
   visibility: hidden;
-  }
-  #nav ul li ul li {
-    background: darkorange;
-    display: block;
-    color: #fff;
-    }
+}
 
-    #nav ul li:hover ul {
-    display: block;
-    opacity: 1;
-    visibility: visible;
-    }
+#nav ul li ul li {
+  background: darkorange;
+  display: block;
+  color: #fff;
+}
+
+#nav ul li:hover ul {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+}
 
 
-  #intro{
-    background-color:#c9a164;
-    background-size: 100%;
-    text-align: center;
-    padding: 20px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color: white;
+#intro{
+  background-color:#c9a164;
+  background-size: 100%;
+  text-align: center;
+  padding: 20px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: white;
+}
 
-  }
-  #intro img{
-    display: block;
-    margin: auto;
-    width: 150px;
-    border-radius: 50%;
-    float: left;
-    margin-left: 30px;
-  }
-  #intro h1{
-    font-size: 50px;
-  }
-  #intro p{
-    font-size: 20px;
-  }
+#intro img{
+  display: block;
+  margin: auto;
+  width: 150px;
+  border-radius: 50%;
+  float: left;
+  margin-left: 30px;
+}
+
+#intro h1{
+  font-size: 50px;
+}
+
+#intro p{
+  font-size: 20px;
+}
 
 #about{
   text-align: center;
   padding: 40px;
   margin-left: 25%;
+}
 
-}
 #about img{
-width: 140px;
-border-radius: 50%;
-margin-right: 50px;
-margin-left: 50px;
+  width: 140px;
+  border-radius: 50%;
+  margin-right: 50px;
+  margin-left: 50px;
 }
+
 #location{
   margin-left: 10%;
   margin-bottom: 40px;
 }
+
 #product{
   text-align: center;
   padding: 40px;
   margin: 0 20px;
-
 }
+
 #product img{
   width: 300px;
   margin: 20px 80px 20px 80px;
@@ -122,21 +132,21 @@ margin-left: 50px;
   text-align: center;
   padding: 40px;
 }
+
 #staff img{
-width: 140px;
-border-radius: 50%;
+  width: 140px;
+  border-radius: 50%;
 }
+
 #gallery{
   text-align: center;
   padding: 40px;
-
-
 }
+
 #gallery img{
-width: 400px;
-margin: 20px 50px 20px 20px;
+  width: 400px;
+  margin: 20px 50px 20px 20px;
 }
-
 
 #why-us{
   background-color:#dda44d;
@@ -147,22 +157,26 @@ margin: 20px 50px 20px 20px;
   padding: 30px;
   margin: 50px auto;
 }
+
 #why-us h2{
   font-size: 50px;
 }
 #why-us img{
-    width: 100%;
+  width: 100%;
 }
+
 #service{
   width: 75%;
   padding: 30px;
   margin: 50px auto;
 }
+
 #service h2{
   font-size: 50px;
 }
+
 #service img{
-    width: 100%;
+  width: 100%;
 }
 
 #contact{
@@ -170,60 +184,63 @@ margin: 20px 50px 20px 20px;
   color: white;
   padding: 20px;
 }
+
 footer{
   text-align: center;
   background-color: #dda44d;
   padding: 10px;
-
 }
-
 
 #contactleft{
   float:left;
   padding-left: 12%;
   position: sticky;
 }
+
 #contactright{
   float: right;
   padding-right: 12%;
   position: sticky;
 }
+
 #socialbar{
-    list-style: none;
-    padding-right: 10px;
+  list-style: none;
+  padding-right: 10px;
 }
+
 #socialbar li{
   display: inline;
   padding: 5px;
 }
+
 #socialbar img{
   width: 50px;
 }
+
 #p2{
   margin-right: 10px;
 }
 
 #appointment {
 	background-color: #dda44d;
-		padding: 15px;
-		margin: 15px auto;
-		width: 50%;
-		border: 2px solid gray;
-		border-radius: 15px;
-		margin-bottom: 35px;
+  padding: 15px;
+  margin: 15px auto;
+  width: 50%;
+  border: 2px solid gray;
+  border-radius: 15px;
+  margin-bottom: 35px;
 }
-
-
-
 
 #desc{
   margin: 50px;
 }
+
 #desc img{
   width: 300px;
   padding-left: 100px;
   padding-right: 100px;
 }
+
 #desc p{
   padding-right: 100px;
 }

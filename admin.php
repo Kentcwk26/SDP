@@ -10,12 +10,12 @@
 </head>
 <style>
     .box{
-        width: 200px;
-        height: 80px;
+        width: 400px;
+        height: 150px;
         background-color: black;
         color: white;
         margin: 20px 40px;
-        padding: 120px 20px;
+        padding: 140px 40px;
         font-size: 25px;
         font-weight: bold;
     }
@@ -29,16 +29,10 @@
     <br><h1><b>Welcome back, Admin!</b></h1>
     <div style="display:flex; justify-content: center;">
         <a href="manageuser.php">
-            <div class="box">Manage Users</div>
+            <div class="box"><br>Manage Users</div>
         </a>
         <a href="gsr.php">
-            <div class="box">Sales Report</div>
-        </a>
-        <a href="staffmain.php">
-            <div class="box">Staff Page</div>
-        </a>
-        <a href="vet.php">
-            <div class="box">Vet Page</div>
+            <div class="box"><br>Sales Report</div>
         </a>
     </div>
     <div><h1 style="font-size: 140%;">SDP PET PARADISE @COPYRIGHT 2023, ALL RIGHT RESERVED.</h1></center>

@@ -62,7 +62,8 @@
         $result = mysqli_query($connection,$query);
         while ($row = mysqli_fetch_assoc($result)){
             $id = $row['appointment_id'];
-            $customername = $row['customer_id'];
+            $customer = $row['customer_id'];
+            $pet = $row['pet_id'];
             $service = $row['appointment_service'];
             $datetime = $row['appointment_datetime'];
         }
@@ -78,12 +79,16 @@
                 <td><input type="text" id="user-input" name="booking-service" value="<?php echo $service;?>" readonly></td>
             </tr>
             <tr>
-                <td><label for="CustomerName" style="color: white">Customer:</label></td>
-                <td><input type="text" id="user-input" name="customer-name" value="<?php echo $customername;?>" readonly></td>
-            </tr>
-            <tr>
                 <td><label for="bookingDateTime" style="color: white">Booking Date & Time:</label></td>
                 <td><input type="text" id="user-input" name="booking-datetime" value="<?php echo $datetime?>" readonly></td>
+            </tr>
+            <tr>
+                <td><label for="CustomerName" style="color: white">Customer:</label></td>
+                <td><input type="text" id="user-input" name="customer-name" value="<?php echo $customer;?>" readonly></td>
+            </tr>
+            <tr>
+                <td><label for="CustomerName" style="color: white">Pet:</label></td>
+                <td><input type="text" id="user-input" name="customer-name" value="<?php echo $pet;?>" readonly></td>
             </tr>
         </table>
         <table class="center" style="margin-top: 20px;">
@@ -95,9 +100,9 @@
     </form>
     <?php
         if(isset($_POST['Submit'])){
-            $query = "DELETE FROM appointment WHERE appointment_id = '$id'";
-            $result = mysqli_query($connection,$query);
-            if($result){
+            $query2 = "DELETE FROM appointment WHERE appointment_id = '$id'";
+            $result2 = mysqli_query($connection,$query);
+            if($result2){
                 echo "<script>alert('Delete appointment')</script>";
                 echo "<script>window.open('managebookingservices.php','_self')</script>";
             }

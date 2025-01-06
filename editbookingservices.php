@@ -87,7 +87,7 @@
             $AppointmentID = $row['appointment_id'];
             $BookingService = $row['appointment_service'];
             $BookingDate = $row['appointment_datetime'];
-            $CustomerName = $row['cus_name'];
+            $CustomerName = $row['customer_id'];
         }
     ?>
     <form action="#" method="post">
@@ -101,10 +101,10 @@
                 <td>
                     <input list="BookingService" style="width:652px; height: 40px; font-family: Times New Roman; font-size: 14px;">
                     <datalist id="BookingService" name="BookingService">
-                        <option value="Booking Service 1">Pet Grooming</option>
-                        <option value="Booking Service 2">Pet Medical Services</option>
-                        <option value="Booking Service 3">Pet Sitting</option>
-                        <option value="Booking Service 4">Overnight Pet Care (1 day)</option>
+                        <option value="Booking Service 1" <?php if($BookingService == "Pet Grooming"){ echo "selected";}?>>Pet Grooming</option>
+                        <option value="Booking Service 2" <?php if($BookingService == "Pet Medical Services"){ echo "selected";}?>>Pet Medical Services</option>
+                        <option value="Booking Service 3" <?php if($BookingService == "Pet Sitting"){ echo "selected";}?>>Pet Sitting</option>
+                        <option value="Booking Service 4" <?php if($BookingService == "Overnight Pet Care (1 day)"){ echo "selected";}?>>Overnight Pet Care (1 day)</option>
                     </datalist>
                 </td>
             </tr>
@@ -139,7 +139,7 @@
                     $BookingService = $_POST['BookingService'];
                     $Booking = test_input($_POST['booking-datetime']);
                     $CustomerName = test_input($_POST['customer-name']);
-                    $sql = "UPDATE appointment SET cus_name = '$CustomerName', appointment_service = '$BookingService', appointment_datetime = '$BookingDate' WHERE appointment_id = '$AppointmentID')";
+                    $sql = "UPDATE appointment SET customer_id = '$CustomerName', appointment_service = '$BookingService', appointment_datetime = '$BookingDate' WHERE appointment_id = '$AppointmentID')";
                     if(mysqli_query($connection, $sql)){
                         echo "<script>alert('Booking Service updated successfully!')</script>";
                         echo "<script>window.open('managebookingservices.php','_self')</script>";

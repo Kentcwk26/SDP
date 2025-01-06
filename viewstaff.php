@@ -34,19 +34,22 @@
         object-fit: cover;
         object-position: center;
         border-radius: 50%;
-        padding: 8px;
+        padding: 10px;
         float: right;
     }
-    input[type=button]{
+    .button1, .button2, input[type=button]{
         width: 100px;
         height: 30px;
         margin: 5px;
         border-radius: 10%;
         font-size: 14px;
     }
-    input[type=button]:active {
+    .button1:active, .button2:active,input[type=button]:active {
         box-shadow: 0 5px none;
         transform: translateY(2px);
+    }
+    button{
+        cursor: pointer;
     }
     input[type=button]:hover{
         background-color: black;
@@ -54,13 +57,17 @@
         font-weight:bold;
         cursor: pointer;
     }
-    .circleavatar{
-        width: 160px;
-        height: 160px;
-        border-radius: 50%;
-        background-color: #D9BB97;
-        margin: 10px;
-        flex-direction: column;
+    .button2:hover{
+        background-color: red;
+        color: black;
+        font-weight:bold;
+        cursor: pointer;
+    }
+    .button1:hover{
+        background-color: green;
+        color: black;
+        font-weight:bold;
+        cursor: pointer;
     }
     a:hover, a:visited:hover{
         color: orange;
@@ -83,27 +90,41 @@
         $result = mysqli_query($connection,$query);
         while ($row = mysqli_fetch_assoc($result)){
             $id = $row['staff_id'];
+            $name = $row['staff_name'];
             $username = $row['staff_username'];
             $contact = $row['staff_contact'];
             $desc = $row['staff_desc'];
-        ?>
+        }
+        if ($desc == "All"){
+            $image = 'S1';
+        } else if ($desc = "Manage Products") {
+            $image == 'S2';
+        } else if ($desc = "Groomer"){
+            $image == "S3";
+        } else {
+            $image == "S4";
+        }
+    ?>    
     <div id="box" style="margin-top: 10px;">
-        <center><h1 style="padding-top: 5px"><b>Staff Information</b></h1></center>
-        <table>
+        <center><h1><b>Staff Information</b></h1></center>
+        <div class="container">
+            <img src="png/<?php echo $image?>.jpg" width="100px" height="100px" class="circular-img">
+        </div>
+        <table style="padding-left: 20px">
             <tr>
                 <td>Staff ID:</td>
                 <td><?php echo $id; ?></td>
             </tr>
             <tr>
                 <td>Staff Name:</td>
-                <td><?php echo $username; ?></td>
+                <td><?php echo $name; ?></td>
             </tr>
             <tr>
                 <td>Staff Contact:</td>
                 <td><?php echo $contact; ?></td>
             </tr>
             <tr>
-                <td>Staff Description:</td>
+                <td>Staff desc:</td>
                 <td><?php echo $desc; ?></td>
             </tr>
         </table>
@@ -115,8 +136,7 @@
                     <input type="button" value="Cancel" onclick="window.open('managestaff.php','_self')">
                 </td>
             </tr>
-        <?php
-            }   
+        <?php 
             mysqli_close($connection);
         ?>
     </table>

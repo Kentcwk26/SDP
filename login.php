@@ -2,7 +2,7 @@
 session_start();
 include 'dbcon.php';
 if (isset($_POST['login'])) {
-    $username =$_POST['txtUsername'];
+    $username = $_POST['txtUsername'];
     $password = $_POST['txtPassword'];
     $query = "SELECT * FROM customer WHERE customer_username='$username' AND customer_password='$password'";
     $results = mysqli_query($connection, $query);
@@ -11,30 +11,27 @@ if (isset($_POST['login'])) {
     if($count==1) {
         //$fullname = $row['firstname'] . " ". $row['lastname']; // run with line with 
         $_SESSION['ID'] = $row['customer_id'];
-        echo "<script>alert('Congratulations!');</script>";
+        echo "<script>alert('Welcome! $username');</script>";
         //redirect the user to your main page]
         //header("Location: mainPage.php?name=" . $fullname); // run with it
-        echo "<script>location.href = 'mainindex.php'</script>"; 
+        echo "<script>location.href = 'mainindex2.php'</script>"; 
     } else {
         $query = "SELECT * FROM staff WHERE staff_username='$username' AND staff_password='$password'";
         $results = mysqli_query($connection, $query);
         $count = mysqli_num_rows($results);
-
         if ($count == 1) {
             $row = mysqli_fetch_assoc($results);
             $_SESSION['Staff_ID'] = $row['staff_id'];
-            echo "<script>alert('Congratulations! You are logged in as staff.');</script>";
-            echo "<script>location.href = 'mainindex.php'</script>";
-
+            echo "<script>alert('You are logged in as staff.');</script>";
+            echo "<script>location.href = 'staffmain.php'</script>";
         } else {
             $query = "SELECT * FROM admin WHERE admin_username='$username' AND admin_password='$password'";
             $results = mysqli_query($connection, $query);
             $count = mysqli_num_rows($results);
-
             if ($count == 1) {
                 $row = mysqli_fetch_assoc($results);
                 $_SESSION['Admin_ID'] = $row['admin_id'];
-                echo "<script>alert('Congratulations! You are logged in as an admin.');</script>";
+                echo "<script>alert('You are logged in as an admin.');</script>";
                 echo "<script>location.href = 'admin.php'</script>";      
             
             } else {
@@ -107,37 +104,38 @@ mysqli_close($connection);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css\style3.css">
-
+    <title>Login / Register</title>
+    <link rel="icon" type="image/x-icon" href="png/Icon.png">
+    <link rel="stylesheet" type="text/css" href="css/style3.css">
 </head>
+<style>
+    h2{
+        padding: 4px;
+    }
+    body{
+        background-color: #fae094;
+    }
+</style>
 <body>
-    
+<script src="https://widget.flowxo.com/embed.js" data-fxo-widget="eyJ0aGVtZSI6IiM2MmUzNjgiLCJ3ZWIiOnsiYm90SWQiOiI2NDU3MzFhMGU5YzUyZjAwMjg4OWQwNGIiLCJ0aGVtZSI6IiM2MmUzNjgifX0=" async defer></script>
     <header>
-        <h2><img src="png/Logo4.png" width="100px"></h2>
+        <a href="mainindex.php"><img src="png\Logo4.png" style="width: 160px; height: 136px"></a>
         <nav class="navigation">
-            <a href="#">About Us</a>
+            <a href="aboutUs.php">About Us</a>
             <a href="#">Help & Support</a>
-            <a href="#">Services</a>
-            <a href="#">Privacy Notes</a>
+            <a href="service.php">Services</a>
+            <a href="Privacynote.php">Privacy Notes</a>
             <button class="btnLogin-popup">Login</button>
         </nav>
     </header>
-
     <div class="wrapper">
         <span class="icon-close">
             <ion-icon name="close-outline"></ion-icon>
         </span>
-
         <div class="form-box login">
             <h2>Login</h2>
-            <div id="formSwitchBtn">
-                <button class="active">Login</button>
-                <button class="register-button">Registration</button>
-            </div>
             <form action="#" method="POST">
                 <div class="input-box">
-                    <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
                     <input id="LoginEmail" type="text" name="txtUsername" required>
                     <label>Username</label>
                 </div> 
@@ -150,7 +148,7 @@ mysqli_close($connection);
                     <label><input type="checkbox">Remember me</label>
                     <a href="#" class="forgotpassword-link">Forgot Password?</a>
                 </div>
-                <input onclick="return ValidateLoginForm();" type="submit" class="btn" value="Login" name="login">
+                <input  type="submit" class="btn" value="Login" name="login">
                 <div class="login-register">
                     <p>Don't have an account? <a href="#" class="register-link">Register</a></p>
                 </div>
@@ -159,10 +157,6 @@ mysqli_close($connection);
 
         <div class="form-box register">
             <h2>Registration</h2>
-            <div id="formSwitchBtn">
-                <button class="login-button">Login</button>
-                <button class="active">Registration</button>
-            </div>
             <form action="#" method="POST">
                 <div class="input-box">
                     <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
@@ -200,12 +194,6 @@ mysqli_close($connection);
         </div>
 
         <div class="form-box petregister">
-            <h2>Registration</h2>
-            <div id="formSwitchBtn">
-                <button>Login</button>
-                <button class="active">Registration</button>
-            </div>
-            
                 <div class="input-box">
                     <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
                     <input type="text" name="txtpetname" required>
@@ -348,6 +336,7 @@ mysqli_close($connection);
                 passwordIcon.name = 'eye-off-outline'; // Change the eye icon to closed eye
             }
         }
+
         function toggleResetConfirmPasswordVisibility() {
             var confirmPasswordInput = document.getElementById('reset-input-confirm-password');
             var confirmPasswordIcon = document.getElementById('reset-confirm-password-icon');
@@ -362,20 +351,7 @@ mysqli_close($connection);
                 confirmPasswordIcon.name = 'eye-off-outline'; // Change the eye icon to closed eye
             }
         }
-        function ValidateLoginForm() {
-            RemoveAllErrorMessage();
 
-            var LoginPassword = document.getElementById('input-password').value;
-            var PasswordValidationMessage;
-            
-            PasswordValidationMessage = isValidPassword(LoginPassword);
-            if(PasswordValidationMessage != "valid"){
-                ShowErrorMessage('input-password',PasswordValidationMessage);
-                return false;
-            }
-            
-            return true;
-        }
         function RemoveAllErrorMessage(){
 
             var allErrorMessage = document.getElementsByClassName('error-message');
@@ -439,7 +415,8 @@ mysqli_close($connection);
             return "valid";
         }
     </script>
-    <script src="script3.js"></script>
+
+    <script src="js/script2.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 

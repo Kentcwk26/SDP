@@ -121,32 +121,33 @@
         if(isset($_POST['Submit'])){
             $request_datetime = $_POST['booking-datetime'];
             $BookingService = $_POST['BookingService'];
-            $query = "SELECT appointment_service, appointment_datetime FROM appointment WHERE appointment_service = 'Pet Medical Services' OR appointment_service = 'Pet Grooming' AND appointment_datetime= '$request_datetime'";
-            $result = $connection->query($query);
-            $row = $result->fetch_assoc();
-            $booking_service = $row['appointment_service'];
-            $appointment_datetime = $row['appointment_datetime'];
-            if ($booking_service == $BookingService and $appointment_datetime == $request_datetime){
-                echo "<script>alert('The booking service is already booked, kindly choose another day.')</script>";
-            } else {
-                $prefix = "Q";
-                $last_id = 0;
-                $sql2 = "SELECT appointment_id FROM appointment ORDER BY appointment_id DESC LIMIT 1";
-                $result = mysqli_query($connection,$sql2);
-                if (mysqli_num_rows($result) > 0) {
-                    $row = mysqli_fetch_assoc($result);
-                    $last_id = substr($row["appointment_id"], 1);
-                }
-                $new_id = $prefix . ($last_id + 1);
-                $AppointmentID = $new_id;
-                $customer = $_POST['customer'];
-                $pet = $_POST['pet'];
-                $sql5 = "INSERT INTO `appointment`(`customer_id`, `pet_id`, `appointment_id`, `appointment_datetime`, `appointment_service`) VALUES ('$customer', '$pet', '$AppointmentID', '$request_datetime', '$BookingService')";
-                if(mysqli_query($connection, $sql5)){
-                    echo "<script>alert('Booking Service added successfully!')</script>";
-                    echo "<script>window.open('managebookingservices.php','_self')</script>";
+            $query = "SELECT COUNT(*) as count FROM appointment WHERE (appointment_service = 'Pet Medical Services' OR appointment_service = 'Pet Grooming') AND appointment_datetime = '$request_datetime'";
+            $result = mysqli_query($connection,$query);
+            if ($result) {
+                $row = $result->fetch_assoc();
+                $count = $row['count'];
+                if ($count > 0){
+                    echo "<script>alert('The booking service is already booked, kindly choose another day.')</script>";
                 } else {
-                    echo "<script>alert('Booking Service failed to add!')</script>";
+                    $prefix = "Q";
+                    $last_id = 0;
+                    $sql2 = "SELECT appointment_id FROM appointment ORDER BY appointment_id DESC LIMIT 1";
+                    $result = mysqli_query($connection,$sql2);
+                    if (mysqli_num_rows($result) > 0) {
+                        $row = mysqli_fetch_assoc($result);
+                        $last_id = substr($row["appointment_id"], 1);
+                    }
+                    $new_id = $prefix . ($last_id + 1);
+                    $AppointmentID = $new_id;
+                    $customer = $_POST['customer'];
+                    $pet = $_POST['pet'];
+                    $sql5 = "INSERT INTO `appointment`(`customer_id`, `pet_id`, `appointment_id`, `appointment_datetime`, `appointment_service`) VALUES ('$customer', '$pet', '$AppointmentID', '$request_datetime', '$BookingService')";
+                    if(mysqli_query($connection, $sql5)){
+                        echo "<script>alert('Booking Service added successfully!')</script>";
+                        echo "<script>window.open('managebookingservices.php','_self')</script>";
+                    } else {
+                        echo "<script>alert('Booking Service failed to add!')</script>";
+                    }
                 }
             }
         }
